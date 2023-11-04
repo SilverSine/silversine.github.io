@@ -2,6 +2,7 @@
 var gamesE = []
 
 var selectedTags = []
+var isBeta = false
 
 function createGames(games) {
 	gamesE = []
@@ -10,7 +11,7 @@ function createGames(games) {
 	}
 }
 
-createGames(Object.keys(games))
+createGames(getGames(selectedTags, false))
 
 function gamesTick() {
 	ui.text(sidebar / 2, 50 * su, 75 * su, "Games", {align: "center"})
@@ -83,9 +84,10 @@ function gamesTick() {
 	ui.rect(sidebar + content.width/2 + cSidebar - 1.25*su, tSidebar, content.width+2.5*su, 5*su, [255, 255, 255, 1])
 
 	for (let i = 0; i < tags.length; i++) {
+		if (tags[i] == "None") { continue }
 		let colour = [200, 200, 200, 1]
 		let textColour = [255, 255, 255, 1]
-		if (selectedTags.includes(tags[i])) {
+		if (selectedTags.includes(tags[i]) || (isBeta && tags[i] == "Beta")) {
 			colour = [125, 125, 125, 1]
 			textColour = [200, 200, 200, 1]
 		}
@@ -97,13 +99,19 @@ function gamesTick() {
 	}
 
 	for (let i = 0; i < tags.length; i++) {
+		if (tags[i] == "None") { continue }
 		if (ui.hovered(sidebar + cSidebar/2, i*42.5*su + tSidebar + 22.5*su, cSidebar-5*su, 40*su) && mouse.lclick) {
-			if (selectedTags.includes(tags[i])) {
-				selectedTags.splice(selectedTags.indexOf(tags[i]), 1)
-				createGames(getGames(selectedTags))
+			if (tags[i] == "Beta") {
+				isBeta = !isBeta
+				createGames(getGames(selectedTags, isBeta))
 			} else {
-				selectedTags.push(tags[i])
-				createGames(getGames(selectedTags))
+				if (selectedTags.includes(tags[i])) {
+					selectedTags.splice(selectedTags.indexOf(tags[i]), 1)
+					createGames(getGames(selectedTags, isBeta))
+				} else {
+					selectedTags.push(tags[i])
+					createGames(getGames(selectedTags, isBeta))
+				}
 			}
 		}
 	}
