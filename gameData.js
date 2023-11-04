@@ -2,7 +2,7 @@
 var tags = ["JS", "Scratch", "Godot", "Python", "Multiplayer", "2D", "3D", "Simulation", "Creator", "Education", "Platformer", "Speedrun", "Clicker", "None", "Beta"]
 
 var games = {
-	"FPS Game": ["FPS Game", "Multiplayer FPS Game", "https://krunker.io", "images/games/krunker stolen L.jpg", ["JS", "3D", "Multiplayer", "Platformer", "Beta"]],
+	"FPS Game": ["FPS Game", "Multiplayer FPS Game", "https://silverspace505.github.io/fps-game/", "images/games/krunker stolen L.jpg", ["JS", "3D", "Multiplayer", "Platformer", "Beta"]],
 	"Ecosystem": ["Ecosystem", "Ecosystem Simulator with AI", "https://silverspace505.github.io/ecosystem/", "images/games/ecosystem.png", ["JS", "2D", "Simulation", "Beta"]],
 	"The Farlands": ["The Farlands", "Cool Game", "https://silverspace505.github.io/the-farlands/", "images/games/the farlands.png", ["JS", "Creator", "3D", "Multiplayer"]],
 	"Life 3": ["Life 3", "3rd Partice Simulation", "https://life-3.silverspace505.repl.co", "images/games/life 3.png", ["JS", "Simulation", "3D"]],
