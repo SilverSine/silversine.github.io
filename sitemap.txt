@@ -1,6 +1,1 @@
-https://silverspace505.repl.co
-https://silverspace505.repl.co/index.html
-https://silverspace505.repl.co/script.js
-https://silverspace505.repl.co/silver.js
-https://silverspace505.repl.co/info.js
-https://silverspace505.repl.co/games.js
+https://silverspace505.github.io
