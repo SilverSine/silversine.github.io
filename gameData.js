@@ -3,6 +3,7 @@ var tags = ["JS", "Scratch", "Godot", "Python", "Multiplayer", "2D", "3D", "Mobi
 
 var games = {
 	"FPS Game": ["FPS Game", "Multiplayer FPS Game", "https://silverspace505.github.io/fps-game/", "images/games/fps-game.png", ["JS", "3D", "Multiplayer", "Platformer", "Desktop", "Beta"]],
+	"Year 9 Digi": ["Year 9 Digi", "Year 9 Digital Tech Project", "https://silverspace505.github.io/year-9-digi/", "images/games/year-9-digi.png", ["JS", "2D", "Speedrun", "Desktop", "Beta", "Education"]],
 	"Ecosystem": ["Ecosystem", "Ecosystem Simulator with AI", "https://silverspace505.github.io/ecosystem/", "images/games/ecosystem.png", ["JS", "2D", "Simulation", "Mobile", "Desktop", "Beta"]],
 	"The Farlands": ["The Farlands", "Cool Game", "https://silverspace505.github.io/the-farlands/", "images/games/the farlands.png", ["JS", "Creator", "3D", "Mobile", "Desktop", "Multiplayer"]],
 	"Life 3": ["Life 3", "3rd Partice Simulation", "https://life-3.silverspace505.repl.co", "images/games/life 3.png", ["JS", "Simulation", "Mobile", "Desktop", "3D"]],
