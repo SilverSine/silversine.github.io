@@ -37,6 +37,8 @@ ui.textShadow.multiply = 0.75
 
 canvas.style.display = "block"
 
+var ws = new WebSocket("wss://silverspace505.glitch.me")
+
 function tick(timestamp) {
 	requestAnimationFrame(tick)
 
