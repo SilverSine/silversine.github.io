@@ -39,6 +39,21 @@ canvas.style.display = "block"
 
 var ws = new WebSocket("wss://silverspace505.glitch.me")
 
+function getViews() {
+	ws.send(JSON.stringify({getViews: true}))
+}
+
+ws.addEventListener("open", (event) => {
+	console.log("Connected")
+})
+
+ws.addEventListener("message", (event) => {
+	let msg = JSON.parse(event.data)
+	if (msg.views) {
+		console.log("Views: " + msg.views)
+	}
+})
+
 function tick(timestamp) {
 	requestAnimationFrame(tick)
 
