@@ -31,8 +31,8 @@ function infoTick() {
 	ui.setC(content)
 	
 	ui.text(50 * su, 40 * su, 35 * su, "What i am doing now")
-	wid = ui.text(50 * su, 80 * su, 20 * su, "Making The Farlands - ", {wrap: s - 50 * su})
-	joinDiscordLink = ui.link(50*su + wid.width, 80*su, 20*su, "Join the Discord server!")
+	wid = ui.text(50 * su, 80 * su, 20 * su, "Making Battle Cubes, Speedwing, and Ecosystem", {wrap: s - 50 * su})
+	// joinDiscordLink = ui.link(50*su + wid.width, 80*su, 20*su, "Join the Discord server!")
 
 	let lines2 = wid.lines
 	
@@ -63,9 +63,9 @@ function infoTick() {
 		}
 	}
 
-	if (ui.hovered(...joinDiscordLink)) {
-		document.body.style.cursor = "pointer"
-	}
+	// if (ui.hovered(...joinDiscordLink)) {
+	// 	document.body.style.cursor = "pointer"
+	// }
 
 	let s2 = 450*su
 
@@ -98,7 +98,7 @@ function checkInfoLinks() {
 		}
 	}
 
-	if (ui.hovered(...joinDiscordLink)) {
-		window.open("https://discord.com/invite/UUxdvXTe4t", "_blank")
-	}
+	// if (ui.hovered(...joinDiscordLink)) {
+	// 	window.open("https://discord.com/invite/UUxdvXTe4t", "_blank")
+	// }
 }
