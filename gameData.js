@@ -2,7 +2,7 @@
 var tags = ["JS", "Scratch", "Godot", "Python", "Multiplayer", "2D", "3D", "Mobile", "Desktop", "Simulation", "Creator", "Education", "Platformer", "Speedrun", "Clicker", "None", "Beta"]
 
 var games = {
-	"Battle Cubes": ["Battle Cubes", "Multiplayer FPS Game", "https://silverspace505.github.io/battle-cubes/", "images/games/battle-cubes.png", ["JS", "3D", "Multiplayer", "Platformer", "Desktop", "Beta"]],
+	"Battle Cubes": ["Battle Cubes", "Multiplayer FPS Game", "https://silverspace505.github.io/battle-cubes/", "images/games/battle-cubes.png", ["JS", "3D", "Multiplayer", "Platformer", "Desktop"]],
 	"Year 9 Digi": ["Year 9 Digi", "Year 9 Digital Tech Project", "https://silverspace505.github.io/year-9-digi/", "images/games/year-9-digi.png", ["JS", "2D", "Speedrun", "Desktop", "Beta", "Education"]],
 	"Ecosystem": ["Ecosystem", "Ecosystem Simulator with AI", "https://silverspace505.github.io/ecosystem/", "images/games/ecosystem.png", ["JS", "2D", "Simulation", "Mobile", "Desktop", "Beta"]],
 	"The Farlands": ["The Farlands", "Cool Game", "https://silverspace505.github.io/the-farlands/", "images/games/the farlands.png", ["JS", "Creator", "3D", "Mobile", "Desktop", "Multiplayer"]],
