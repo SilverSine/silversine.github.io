@@ -12,16 +12,6 @@ canvas {
 	display: none;
 }
 
-#cover {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	width: 5000px;
-	height: 5000px;
-	background-color: #161616;
-	display: none;
-}
-
 h3 {
 	color: #161616;
 }
