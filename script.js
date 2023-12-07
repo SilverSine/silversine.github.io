@@ -27,9 +27,9 @@ var su = 1
 
 var gameAddon = 0
 
-var content = new ui.Canvas(0, 0, 0, 0)
+var content = new ui.Canvas()
 
-var backButton = new ui.Button(0, 0, 0, 0, "rect", "Back")
+var backButton = new ui.Button("rect", "Back")
 backButton.hoverMul = 0.95
 
 ui.textShadow.bottom = "auto"

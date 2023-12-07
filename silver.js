@@ -1,6 +1,6 @@
 
-var gamesButton = new ui.Button(0, 0, 0, 0, "rect", "Games")
-var infoButton = new ui.Button(0, 0, 0, 0, "rect", "Information")
+var gamesButton = new ui.Button("rect", "Games")
+var infoButton = new ui.Button("rect", "Information")
 gamesButton.hoverMul = 0.95
 infoButton.hoverMul = 0.95
 
