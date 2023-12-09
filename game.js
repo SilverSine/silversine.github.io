@@ -44,15 +44,18 @@ class Game {
 		ui.rect(this.x, this.y, this.width*this.size, this.height*this.size, [255, 255, 255, 0.1*this.anim])
 
 		if (this.anim > 0) {
-			let oldA = ctx.globalAlpha
-			ctx.globalAlpha *= this.anim
-			this.lines = ui.text(this.x, this.y + this.height/2 - 15*su, 15*su, games[this.data][1], {align: "center", wrap: this.width}).lines
-			ctx.globalAlpha = oldA
+			this.lines = ui.measureText(15*su, games[this.data][1], {align: "center", wrap: this.width}).lines
 		}
 
 		let size = 25*su
 		while (ui.measureText(size, games[this.data][0]).width > this.width) {
 			size *= 0.75
+		}
+		if (this.anim > 0) {
+			let oldA = ctx.globalAlpha
+			ctx.globalAlpha *= this.anim
+			ui.text(this.x, this.y + this.height/2 + 5*su - (this.lines*15*su+5*su), 15*su, games[this.data][1], {align: "center", wrap: this.width})
+			ctx.globalAlpha = oldA
 		}
 		ui.text(this.x, this.y + this.height/2 - size/2 - 5*su - this.anim*(this.lines*15*su+5*su), size, games[this.data][0], {align: "center"})
 	}
