@@ -188,34 +188,10 @@ requestAnimationFrame(tick)
 
 var imgVis = []
 
-var imgs = [
-	"images/games/the farlands.png",
-	"images/games/ghost-mansion.webp",
-	"images/games/powerfall.webp",
-	"images/games/jim's adventure 64x40.png",
-	"images/games/life.png",
-	"images/games/life 2.png",
-	"images/games/updaterra.png",
-	"images/games/tritag.png",
-	"images/games/shark-islands.png",
-	"images/games/bean-island.webp",
-	"images/games/the-2-goblins.webp",
-	"images/games/dodge.webp",
-	"images/games/block-clicker.webp",
-	"images/games/dasher.webp",
-	"images/games/flappy-bird.webp",
-	"images/games/learning_ai.png",
-	"images/games/adventure.png",
-	"images/games/ai-shooter.PNG",
-	"images/games/apple_catcher.png",
-	"images/games/awesome.webp",
-	"images/games/battle.PNG",
-	"images/games/bubble_clicker.png",
-	"images/games/bubble_clicker2.png",
-	"images/games/coins.png",
-	"images/games/dodge.png",
-	"images/games/flappy_bird.png",
-]
+var imgs = []
+for (let game in games) {
+	if (!games[game][4].includes("Beta")) imgs.push(games[game][3])
+}
 
 for (let i in imgs) {
 	imgVis.push(0)

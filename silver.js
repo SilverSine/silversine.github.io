@@ -76,7 +76,7 @@ function silverTick() {
 		page = "games"
     }
 
-	let lines = ui.text(10*su, 150*su + 55*su*2, 20*su, "This is the HUB, this website has all the main games I have made and has some information about me and what I am doing right now.", {wrap: sidebar-10*su}).lines
+	let lines = ui.text(10*su, 150*su + 55*su*2, 20*su, "This is my website, it has all the main games I have made and has some information about me and what I am doing right now.", {wrap: sidebar-10*su}).lines
 
 	ui.rect(sidebar/2, 150*su+55*su*2 + lines*20*su+10*su, sidebar, 5*su, [255, 255, 255, 1])
 }
