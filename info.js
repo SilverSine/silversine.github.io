@@ -31,7 +31,7 @@ function infoTick() {
 	ui.setC(content)
 	
 	ui.text(50 * su, 40 * su, 35 * su, "What i am doing now")
-	wid = ui.text(50 * su, 80 * su, 20 * su, "Making Battle Cubes, Speedwing, and Ecosystem", {wrap: s - 50 * su})
+	wid = ui.text(50 * su, 80 * su, 20 * su, "Making Light no Fire before Hello Games can since it does not appear to be supporting mac on release. To see my progress to go beta games then earth is the project.", {wrap: s - 50 * su})
 	// joinDiscordLink = ui.link(50*su + wid.width, 80*su, 20*su, "Join the Discord server!")
 
 	let lines2 = wid.lines
