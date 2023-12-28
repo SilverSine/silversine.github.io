@@ -37,18 +37,21 @@ ui.textShadow.multiply = 0.75
 
 canvas.style.display = "block"
 
-var ws = new WebSocket("wss://silverspace505.glitch.me")
+var ws = new WebSocket("wss://server.silverspace.online:443")
 
 function getViews() {
 	ws.send(JSON.stringify({getViews: true}))
 }
 
 ws.addEventListener("open", (event) => {
-	console.log("Connected")
+	ws.send(JSON.stringify({connect: "silver"}))
 })
 
 ws.addEventListener("message", (event) => {
 	let msg = JSON.parse(event.data)
+	if (msg.connected) {
+		console.log("Connected")
+	}
 	if (msg.views) {
 		console.log("Views: " + msg.views)
 	}
