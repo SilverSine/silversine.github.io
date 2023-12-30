@@ -39,6 +39,18 @@ canvas.style.display = "block"
 
 var ws = new WebSocket("wss://server.silverspace.online:443")
 
+var id = ""
+var idLoaded = localStorage.getItem("id")
+var letters = "abcdefghijklmnopqrstuvABCDEFGHIJKLMNOPQRS0123456789"
+if (idLoaded) {
+	id = idLoaded
+} else {
+	for (let i = 0; i < 8; i++) {
+		id += letters[Math.round(Math.random()*(letters.length-1))]
+	}
+	localStorage.setItem("id", id)
+}
+
 function getViews() {
 	ws.send(JSON.stringify({getViews: true}))
 }
@@ -51,9 +63,10 @@ ws.addEventListener("message", (event) => {
 	let msg = JSON.parse(event.data)
 	if (msg.connected) {
 		console.log("Connected")
+		ws.send(JSON.stringify({view: id}))
 	}
 	if (msg.views) {
-		console.log("Views: " + msg.views)
+		console.log(JSON.stringify(msg.views))
 	}
 })
 
@@ -74,7 +87,8 @@ function tick(timestamp) {
 			imgVis[i] += (1 - imgVis[i]) * delta * 5
 		}
 	}
-	
+
+	// console.log(Math.round(new Date().getTime()/1000 / 86400)-19720)
 	var w = window.innerWidth
 	var h = window.innerHeight
 
