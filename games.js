@@ -120,6 +120,7 @@ function gamesTick() {
 function checkGames() {
 	for (let game of gamesE) {
 		if (game.hovered) {
+			ws.send(JSON.stringify({click: [game.data, id]}))
 			window.open(games[game.data][2], "_blank")
 		}
 	}

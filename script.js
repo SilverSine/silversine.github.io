@@ -55,6 +55,10 @@ function getViews() {
 	ws.send(JSON.stringify({getViews: true}))
 }
 
+function getClicks() {
+	ws.send(JSON.stringify({getClicks: true}))
+}
+
 ws.addEventListener("open", (event) => {
 	ws.send(JSON.stringify({connect: "silver"}))
 })
@@ -67,6 +71,9 @@ ws.addEventListener("message", (event) => {
 	}
 	if (msg.views) {
 		console.log(JSON.stringify(msg.views))
+	}
+	if (msg.clicks) {
+		console.log(JSON.stringify(msg.clicks))
 	}
 })
 
