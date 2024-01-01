@@ -69,6 +69,9 @@ ws.addEventListener("message", (event) => {
 		console.log("Connected")
 		ws.send(JSON.stringify({view: id}))
 	}
+	if (msg.ping) {
+		sendMsg({ping: true})
+	}
 	if (msg.views) {
 		console.log(JSON.stringify(msg.views))
 	}
