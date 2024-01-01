@@ -26,6 +26,7 @@ var lastTime = 0
 var su = 1
 
 var gameAddon = 0
+var connected = false
 
 var content = new ui.Canvas()
 
@@ -37,7 +38,7 @@ ui.textShadow.multiply = 0.75
 
 canvas.style.display = "block"
 
-var ws = new WebSocket("wss://server.silverspace.online:443")
+var ws
 
 var id = ""
 var idLoaded = localStorage.getItem("id")
@@ -59,26 +60,43 @@ function getClicks() {
 	ws.send(JSON.stringify({getClicks: true}))
 }
 
-ws.addEventListener("open", (event) => {
-	ws.send(JSON.stringify({connect: "silver"}))
-})
+function connectToServer() {
+	if (ws) {
+		if (ws.readyState == WebSocket.OPEN) {
+			ws.close()
+		}
+	}
+	console.log("Connecting...")
+	connected = false
+	ws = new WebSocket("wss://server.silverspace.online:443")
+	ws.addEventListener("open", (event) => {
+		ws.send(JSON.stringify({connect: "silver"}))
+	})
+	
+	ws.addEventListener("message", (event) => {
+		let msg = JSON.parse(event.data)
+		if (msg.connected) {
+			console.log("Connected")
+			ws.send(JSON.stringify({view: id}))
+		}
+		if (msg.ping) {
+			ws.send(JSON.stringify({ping: true}))
+		}
+		if (msg.views) {
+			console.log(JSON.stringify(msg.views))
+		}
+		if (msg.clicks) {
+			console.log(JSON.stringify(msg.clicks))
+		}
+	})
 
-ws.addEventListener("message", (event) => {
-	let msg = JSON.parse(event.data)
-	if (msg.connected) {
-		console.log("Connected")
-		ws.send(JSON.stringify({view: id}))
-	}
-	if (msg.ping) {
-		ws.send(JSON.stringify({ping: true}))
-	}
-	if (msg.views) {
-		console.log(JSON.stringify(msg.views))
-	}
-	if (msg.clicks) {
-		console.log(JSON.stringify(msg.clicks))
-	}
-})
+	ws.addEventListener("close", (event) => {
+		console.log("Disconnected")
+		connectToServer()
+	})
+}
+
+connectToServer()
 
 function tick(timestamp) {
 	requestAnimationFrame(tick)
