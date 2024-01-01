@@ -60,6 +60,8 @@ function getClicks() {
 	ws.send(JSON.stringify({getClicks: true}))
 }
 
+var wConnect = false
+
 function connectToServer() {
 	if (ws) {
 		if (ws.readyState == WebSocket.OPEN) {
@@ -79,7 +81,7 @@ function connectToServer() {
 			console.log("Connected")
 			ws.send(JSON.stringify({view: id}))
 		}
-		if (msg.ping) {
+		if (msg.ping && !document.hidden) {
 			ws.send(JSON.stringify({ping: true}))
 		}
 		if (msg.views) {
@@ -92,7 +94,7 @@ function connectToServer() {
 
 	ws.addEventListener("close", (event) => {
 		console.log("Disconnected")
-		connectToServer()
+		wConnect = true
 	})
 }
 
@@ -114,6 +116,11 @@ function tick(timestamp) {
 		if (imgs[i].complete) {
 			imgVis[i] += (1 - imgVis[i]) * delta * 5
 		}
+	}
+
+	if (wConnect && !document.hidden) {
+		connectToServer()
+		wConnect = false
 	}
 
 	// console.log(Math.round(new Date().getTime()/1000 / 86400)-19720)
