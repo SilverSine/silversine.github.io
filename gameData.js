@@ -4,6 +4,7 @@ var tags = ["JS", "Scratch", "Godot", "Python", "Multiplayer", "2D", "3D", "Mobi
 var games = {
 	"Speedwing": ["Speedwing", "Year 9 Digital Tech Project", "https://speedwing.silverspace.online", "images/games/speedwing.png", ["JS", "2D", "Speedrun", "Desktop", "Education"]],
 	"Battle Cubes": ["Battle Cubes", "Multiplayer FPS Game", "https://battle-cubes.silverspace.online", "images/games/battle-cubes.png", ["JS", "3D", "Multiplayer", "Platformer", "Desktop"]],
+	"Space Shooter AI": ["Space Shoooter AI", "Neural network AI", "https://space-shooter-ai.silverspace.online", "images/games/space-shooter-ai.png", ["JS", "2D", "Desktop", "Simulation"]],
 	"Earth": ["Earth", "Making Light no fire bc it's not mac \nWhat could possibly go wrong???", "https://earth.silverspace.online", "images/games/earth.png", ["JS", "3D", "Beta", "Desktop", "Creator"]],
 	"Ecosystem": ["Ecosystem", "Ecosystem Simulator with AI", "https://ecosystem.silverspace.online", "images/games/ecosystem.png", ["JS", "2D", "Simulation", "Mobile", "Desktop", "Beta"]],
 	"The Farlands": ["The Farlands", "Cool Game", "https://the-farlands.silverspace.online", "images/games/the farlands.png", ["JS", "Creator", "3D", "Mobile", "Desktop", "Multiplayer"]],
@@ -24,7 +25,7 @@ var games = {
 	"Bean Island": ["Bean Island", "Evolution Simulator", "https://gotm.io/team-sowflux/bean-island", "images/games/bean-island.webp", ["Godot", "2D", "Desktop", "Simulation"]],
 	"Ghost Mansion": ["Ghost Mansion", "Action Platformer", "https://gotm.io/thebois34/ghost-mansion", "images/games/ghost-mansion.webp", ["Godot", "2D", "Platformer", "Desktop", "Speedrun"]],
 	"Physics": ["Physics", "Basic physics simulator", "https://scratch.mit.edu/projects/877865021", "images/games/physics.png", ["Scratch", "2D", "Mobile", "Desktop", "Simulation"]],
-	"Space Shooter AI": ["Space Shooter AI", "Aimbot vs Space Shooter", "https://scratch.mit.edu/projects/580056584/", "images/games/ai-shooter.PNG", ["Scratch", "2D", "Desktop", "Mobile", "Simulation"]],
+	"Space Shooter AI - Scratch": ["Space Shooter AI - Scratch", "Aimbot vs Space Shooter", "https://scratch.mit.edu/projects/580056584/", "images/games/ai-shooter.PNG", ["Scratch", "2D", "Desktop", "Mobile", "Simulation"]],
 	"The Forest Storm": ["The Forest Storm", "Online Multiplayer Platformer", "https://scratch.mit.edu/projects/605599439/", "images/games/the-forest-storm.PNG", ["Scratch", "2D", "Platformer", "Desktop", "Multiplayer"]],
 	"Learning AI": ["Learning AI", "Pathfinding AI", "https://scratch.mit.edu/projects/627715911/", "images/games/learning_ai.png", ["Scratch", "2D", "Mobile", "Desktop", "Simulation"]],
 	"Bubble Clicker": ["Bubble Clicker", "Clicker", "https://scratch.mit.edu/projects/353838035/", "images/games/bubble_clicker.png", ["Scratch", "2D", "Mobile", "Desktop", "Clicker"]],
