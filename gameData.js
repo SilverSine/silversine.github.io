@@ -3,6 +3,7 @@ var tags = ["JS", "Scratch", "Godot", "Python", "Multiplayer", "2D", "3D", "Mobi
 
 var games = {
 	"Speedwing": ["Speedwing", "Year 9 Digital Tech Project", "https://speedwing.silverspace.online", "images/games/speedwing.png", ["JS", "2D", "Speedrun", "Desktop", "Education"]],
+	"Road Weaver": ["Road Weaver", "New Year, New Skills Game Jam submission", "https://silverspace.itch.io/road-weaver", "images/games/road-weaver.png", ["JS", "2D", "Desktop"]],
 	"Battle Cubes": ["Battle Cubes", "Multiplayer FPS Game", "https://battle-cubes.silverspace.online", "images/games/battle-cubes.png", ["JS", "3D", "Multiplayer", "Platformer", "Desktop"]],
 	"Space Shooter AI": ["Space Shoooter AI", "Neural network AI", "https://space-shooter-ai.silverspace.online", "images/games/space-shooter-ai.png", ["JS", "2D", "Desktop", "Simulation"]],
 	"Earth": ["Earth", "Making Light no fire bc it's not mac \nWhat could possibly go wrong???", "https://earth.silverspace.online", "images/games/earth.png", ["JS", "3D", "Beta", "Desktop", "Creator"]],
