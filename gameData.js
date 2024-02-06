@@ -2,6 +2,7 @@
 var tags = ["JS", "Scratch", "Godot", "Python", "Multiplayer", "2D", "3D", "Mobile", "Desktop", "Simulation", "Creator", "Education", "Platformer", "Speedrun", "Clicker", "None", "Beta"]
 
 var games = {
+	"Platformer": ["Platformer", "Random Platformer Game", "https://platformer.silverspace.online", "images/games/platformer.png", ["JS", "2D", "Beta", "Platformer", "Multiplayer", "Desktop"]],
 	"Speedwing": ["Speedwing", "Year 9 Digital Tech Project", "https://speedwing.silverspace.online", "images/games/speedwing.png", ["JS", "2D", "Speedrun", "Desktop", "Education"]],
 	"Road Weaver": ["Road Weaver", "New Year, New Skills Game Jam submission", "https://silverspace.itch.io/road-weaver", "images/games/road-weaver.png", ["JS", "2D", "Desktop"]],
 	"Battle Cubes": ["Battle Cubes", "Multiplayer FPS Game", "https://battle-cubes.silverspace.online", "images/games/battle-cubes.png", ["JS", "3D", "Multiplayer", "Platformer", "Desktop"]],
