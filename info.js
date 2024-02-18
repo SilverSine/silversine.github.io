@@ -5,9 +5,12 @@ var joinDiscordLink = []
 
 function infoTick() {
 	ui.text(sidebar / 2, 50 * su, 75 * su, "Info", {align: "center"})
-	
-	backButton.set(sidebar / 2, 150*su, sidebar*0.9, 50*su)
+
 	backButton.basic()
+	backButton.x = sidebar / 2
+	backButton.y = 150 * su
+	backButton.width = sidebar * 0.9
+	backButton.height = 50 * su
 	backButton.textSize = 35 * su
 	backButton.textOff = -60 * su / 2
 	backButton.bgColour = [0.25 * 255, 0.25 * 255, 0.25 * 255, 1]
@@ -21,25 +24,32 @@ function infoTick() {
 
 	let s = content.width / 2.5
 
-	let lines = ui.text(10 * su, 150 * su + 55 * su * 1, 20 * su, "This is information about me, and some links to other accounts.", {wrap: sidebar - 10 * su}).lines
+	let lines = ui.text(10 * su, 150 * su + 55 * su * 1, 20 * su, "This is information about what I am doing, and about me.", {wrap: sidebar - 10 * su}).lines
 
 	ui.rect(sidebar / 2, 150 * su + 55 * su * 1 + lines * 20 * su + 10 * su, sidebar, 5 * su, [255, 255, 255, 1])
 
 	ui.setC(content)
 	
-	ui.text(50 * su, 50*su, 50 * su, "About Me")
+	ui.text(50 * su, 40 * su, 35 * su, "What i am doing now")
+	wid = ui.text(50 * su, 80 * su, 20 * su, "Making Light no Fire before Hello Games can since it does not appear to be supporting mac on release. To see my progress to go beta games then earth is the project.", {wrap: s - 50 * su})
+	// joinDiscordLink = ui.link(50*su + wid.width, 80*su, 20*su, "Join the Discord server!")
+
+	let lines2 = wid.lines
 	
-	let textData = ui.text(50 * su, (50 + 10 + 40) * su, 25 * su, "I code and make games in Python, JS, and Godot. I used to use unity, but it was too messy, complicated, and buggy, and i used to work in a team called Team Sowflux. But now i'm making raw js games and are learning how to make 3d games.", {wrap: s - 50 * su, links: [[148, 159, "https://gotm.io/team-sowflux"]]})
+	ui.text(50 * su, 80 * su + 35 * su + lines2 * 20 * su, 35 * su, "About Me")
+	
+	let textData = ui.text(50 * su, (80 + 35 + 40) * su + lines2 * 20 * su, 20 * su, "I code and make games in Python, JS, and Godot. I used to use unity, but it was too messy, complicated, and buggy, and i used to work in a team called Team Sowflux. But now i'm making raw js games and are learning how to make 3d games.", {wrap: s - 50 * su, links: [[148, 159, "https://gotm.io/team-sowflux"]]})
 	infoLinks = textData.links
 	let lines3 = textData.lines
 
-	ui.text(50 * su, 110 * su + lines3 * 25 * su, 50 * su, "Links")
+	ui.text(50 * su, 110 * su + 35 * 2 * su + (lines2 + lines3) * 20 * su, 35 * su, "Links")
 
 	links = []
-	links.push(ui.link(50 * su, 110 * su + 50*su + lines3 * 25 * su + 20*su*0, 20 * su, "My Github Account"))
-	links.push(ui.link(50 * su, 110 * su + 50*su + lines3 * 25 * su + 20*su*1, 20 * su, "My Itch Account"))
-	links.push(ui.link(50 * su, 110 * su + 50*su + lines3 * 25 * su + 20*su*2, 20 * su, "My Replit Account"))
-	links.push(ui.link(50 * su, 110 * su + 50*su + lines3 * 25 * su + 20*su*3, 20 * su, "My Scratch Account"))
+	links.push(ui.link(50 * su, 110 * su + 35 * 3 * su + (lines2 + lines3) * 20 * su, 20 * su, "My Gotm Account"))
+	links.push(ui.link(50 * su, 110 * su + 35 * 3 * su + (lines2 + lines3) * 20 * su + 20*su*1, 20 * su, "Team Sowflux (My Team)"))
+	links.push(ui.link(50 * su, 110 * su + 35 * 3 * su + (lines2 + lines3) * 20 * su + 20*su*2, 20 * su, "My Itch Account"))
+	links.push(ui.link(50 * su, 110 * su + 35 * 3 * su + (lines2 + lines3) * 20 * su + 20*su*3, 20 * su, "My Replit Account"))
+	links.push(ui.link(50 * su, 110 * su + 35 * 3 * su + (lines2 + lines3) * 20 * su + 20*su*4, 20 * su, "My Scratch Account"))
 	
 	// ui.text(50 * su, 110 * su + 35 * 3 * su + (lines2 + lines3) * 20 * su, 20 * su, "My Gotm Account \nTeam Sowflux (My Team) \nMy Itch Account \nMy Replit Account \nMy Scratch Account")
 	// ui.text(50 * su, 110 * su + 35 * 3 * su + (lines2 + lines3) * 20 * su + 20 * su * 1, 20 * su, "Team Sowflux (My Team)", {colour: [50, 200, 255, 1]})
@@ -74,7 +84,8 @@ function infoTick() {
 }
 
 let actualLinks = [
-	"https://github.com/SilverSpace505",
+	"https://gotm.io/user/silver",
+	"https://gotm.io/team-sowflux",
 	"https://silverspace.itch.io/",
 	"https://replit.com/@SilverSpace505",
 	"https://scratch.mit.edu/users/SilverSpace707/",
