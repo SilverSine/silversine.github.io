@@ -7,13 +7,10 @@ var favicon = document.getElementById("favicon")
 
 var cover = document.getElementById("cover")
 
-var hubImg = new Image(); hubImg.src = "assets/favicon.png"
-var gameImg = new Image(); gameImg.src = "assets/game.png"
-var infoImg = new Image(); infoImg.src = "assets/info.png"
-var devlogImg = new Image(); devlogImg.src = "assets/devlog.png"
-var pfImg = new Image(); pfImg.src = "assets/pf.png"
-
-ui.setFont("font", "assets/font.ttf", 0.8)
+var hubImg = new Image(); hubImg.src = "images/favicon.png"
+var gameImg = new Image(); gameImg.src = "images/game.png"
+var infoImg = new Image(); infoImg.src = "images/info.png"
+var pfImg = new Image(); pfImg.src = "images/pf.png"
 
 var screenScale = 1
 var targetSize = {x: 1500*screenScale, y: 1000*screenScale}
@@ -23,7 +20,7 @@ var sidebar = 0*su
 var tSidebar = 0*su
 var cSidebar = 0*su
 
-var alphas = {silver: 1, games: 0, info: 0, devlogs: 0}
+var alphas = {silver: 1, games: 0, info: 0}
 
 var lastTime = 0
 var su = 1
@@ -167,16 +164,13 @@ function tick(timestamp) {
 		content.y += tSidebar/2 + 2.5*su
 		content.bounds.minY = -gameAddon + content.height
 	}
-	if (page == "devlogs") {
-		content.bounds.minY = -devlogY + content.height + 25*su
-	}
 	content.update()
 	if (alphas.silver > 0) {
 		ctx.globalAlpha = alphas.silver
 		silverTick()
 		if (page == "silver") {
 			document.title = "Silver"
-			// favicon.href = "assets/favicon.png"
+			// favicon.href = "images/favicon.png"
 		}
 	}
 	if (alphas.info > 0) {
@@ -184,7 +178,7 @@ function tick(timestamp) {
 		infoTick()
 		if (page == "info") {
 			document.title = "Information"
-			// favicon.href = "assets/info.png"
+			// favicon.href = "images/info.png"
 		}
 	}
 	if (alphas.games > 0) {
@@ -192,15 +186,7 @@ function tick(timestamp) {
 		gamesTick()
 		if (page == "games") {
 			document.title = "Games"
-			// favicon.href = "assets/game.png"
-		}
-	}
-	if (alphas.devlogs > 0) {
-		ctx.globalAlpha = alphas.devlogs
-		devlogsTick()
-		if (page == "devlogs") {
-			document.title = "Devlogs"
-			// favicon.href = "assets/game.png"
+			// favicon.href = "images/game.png"
 		}
 	}
 
