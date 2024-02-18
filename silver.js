@@ -1,8 +1,10 @@
 
 var gamesButton = new ui.Button("rect", "Games")
 var infoButton = new ui.Button("rect", "Information")
+var devlogButton = new ui.Button("rect", "Devlogs")
 gamesButton.hoverMul = 0.95
 infoButton.hoverMul = 0.95
+devlogButton.hoverMul = 0.95
 
 var page = "silver"
 
@@ -44,28 +46,36 @@ function silverTick() {
 
 	ui.setC()
 
+	gamesButton.set(sidebar/2, 150*su, sidebar*0.9, 50*su)
 	gamesButton.basic()
-	gamesButton.x = sidebar/2
-	gamesButton.y = 150*su
-	gamesButton.width = sidebar*0.9
-	gamesButton.height = 50*su
 	gamesButton.textSize = 35*su
 	gamesButton.textOff = -60*su/2
 	gamesButton.bgColour = [0.25*255, 0.25*255, 0.25*255, 1]
 	gamesButton.draw()
 
+	infoButton.set(sidebar/2, 150*su + 55*su, sidebar*0.9, 50*su)
 	infoButton.basic()
-	infoButton.x = sidebar/2
-	infoButton.y = 150*su + 55*su
-	infoButton.width = sidebar*0.9
-	infoButton.height = 50*su
 	infoButton.textSize = 35*su
 	infoButton.textOff = -50*su/2
 	infoButton.bgColour = [0.25*255, 0.25*255, 0.25*255, 1]
 	infoButton.draw()
 
+	devlogButton.set(sidebar/2, 150*su + 55*su*2, sidebar*0.9, 50*su)
+	devlogButton.basic()
+	devlogButton.textSize = 35*su
+	devlogButton.textOff = -50*su/2
+	devlogButton.bgColour = [0.25*255, 0.25*255, 0.25*255, 1]
+	devlogButton.draw()
+
 	ui.img(sidebar/2+60*su, 150*su, 50*su, 50*su, gameImg)
 	ui.img(sidebar/2+90*su, 150*su + 55*su, 45*su, 45*su, infoImg)
+	ui.img(sidebar/2+70*su, 150*su + 55*su*2, 45*su, 45*su, devlogImg)
+
+	ctx.save()
+	ctx.translate(sidebar/2-120*su, 140*su + 55*su*2)
+	ctx.rotate(-Math.PI/16)
+	ui.text(0, 0, 20*su, "NEW", {colour: [0, 200, 255, 1]})
+	ctx.restore()
 
 	if (infoButton.hovered() && mouse.lclick) {
 		infoButton.click()
@@ -75,8 +85,12 @@ function silverTick() {
 	    gamesButton.click()
 		page = "games"
     }
+	if (devlogButton.hovered() && mouse.lclick) {
+	    devlogButton.click()
+		page = "devlogs"
+    }
 
-	let lines = ui.text(10*su, 150*su + 55*su*2, 20*su, "This is my website, it has all the main games I have made and has some information about me and what I am doing right now.", {wrap: sidebar-10*su}).lines
+	let lines = ui.text(10*su, 150*su + 55*su*3, 20*su, "This is my website, it has all the main games I have made and has some information about me and what I am doing right now.", {wrap: sidebar-10*su}).lines
 
-	ui.rect(sidebar/2, 150*su+55*su*2 + lines*20*su+10*su, sidebar, 5*su, [255, 255, 255, 1])
+	ui.rect(sidebar/2, 150*su+55*su*3 + lines*20*su+10*su, sidebar, 5*su, [255, 255, 255, 1])
 }
