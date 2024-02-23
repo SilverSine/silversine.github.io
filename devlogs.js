@@ -48,7 +48,7 @@ function devlogsTick() {
             }
             y += 315*su
         }
-        if (i < devlogs.length) ui.rect(content.width/2, y-25*su-30*ui.fontSizeMul/2, content.width, 5*su, [50, 50, 50, 1])
+        if (i < devlogs.length) ui.rect(content.width/2, y-25*su-30*su*ui.fontSizeMul/2, content.width, 5*su, [50, 50, 50, 1])
     }
     devlogY = y
     ui
