@@ -14,6 +14,7 @@ var devlogImg = new Image(); devlogImg.src = "assets/devlog.png"
 var pfImg = new Image(); pfImg.src = "assets/pf.png"
 
 ui.setFont("font", "assets/font.ttf", 0.8)
+utils.setStyles()
 
 var screenScale = 1
 var targetSize = {x: 1500*screenScale, y: 1000*screenScale}
@@ -127,21 +128,23 @@ function tick(timestamp) {
 	}
 
 	// console.log(Math.round(new Date().getTime()/1000 / 86400)-19720)
-	var w = window.innerWidth
-	var h = window.innerHeight
+	ui.resizeCanvas()
+	ui.getSu()
+	// var w = window.innerWidth
+	// var h = window.innerHeight
 
-	let aspect = w / targetSize.x
+	// let aspect = w / targetSize.x
 
-	su = aspect
-	if (su > h / targetSize.y) {
-		su = h / targetSize.y
-	}
+	// su = aspect
+	// if (su > h / targetSize.y) {
+	// 	su = h / targetSize.y
+	// }
 
-	canvas.width = w
-	canvas.height = h
+	// canvas.width = w
+	// canvas.height = h
 
-	canvas.width = window.innerWidth
-	canvas.height = window.innerHeight
+	// canvas.width = window.innerWidth
+	// canvas.height = window.innerHeight
 
 	sidebar = 400*su
 	tSidebar = -2.5*su
