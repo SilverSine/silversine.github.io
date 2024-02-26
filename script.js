@@ -242,14 +242,17 @@ function tick(timestamp) {
 	// ui.setC()
 	
 	fps++
+	ui.text(canvas.width-10*su, 35*su, 50*su, fps2, {align: "right"})
 
 	input.updateInput()
 }
 
 var fps = 0
+var fps2 = 0
 
 setInterval(() => {
 	// console.log(fps)
+	fps2 = fps
 	fps = 0
 }, 1000)
 
