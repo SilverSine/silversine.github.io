@@ -243,7 +243,7 @@ function tick(timestamp) {
 	// ui.setC()
 	
 	fps++
-	// ui.text(canvas.width-10*su, 35*su, 50*su, fps2, {align: "right"})
+	ui.text(canvas.width-10*su, 35*su, 50*su, fps2, {align: "right"})
 
 	input.updateInput()
 }
