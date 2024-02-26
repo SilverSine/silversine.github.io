@@ -15,7 +15,7 @@ var pfImg = new Image(); pfImg.src = "assets/pf.png"
 
 ui.setFont("font", "assets/font.ttf", 0.8)
 utils.setStyles()
-ui.scale = 1
+ui.scale = 0.5
 
 var screenScale = 1
 var targetSize = {x: 1500*screenScale, y: 1000*screenScale}
