@@ -14,6 +14,7 @@ var devlogImg = new Image(); devlogImg.src = "assets/devlog.png"
 var pfImg = new Image(); pfImg.src = "assets/pf.png"
 
 ui.setFont("font", "assets/font.ttf", 0.8)
+ui.spacingMul = 1.1
 utils.setStyles()
 ui.scale = 0.5
 
@@ -243,7 +244,7 @@ function tick(timestamp) {
 	// ui.setC()
 	
 	fps++
-	ui.text(canvas.width-10*su, 35*su, 50*su, fps2, {align: "right"})
+	// ui.text(canvas.width-10*su, 35*su, 50*su, fps2, {align: "right"})
 
 	input.updateInput()
 }
