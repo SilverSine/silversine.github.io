@@ -1,3 +1,6 @@
+var canvas = document.getElementById("canvas")
+var ctx = canvas.getContext("2d")
+ctx.off = {x: 0, y: 0}
 
 var gamesButton = new ui.Button("rect", "Games")
 var infoButton = new ui.Button("rect", "Information")
@@ -5,6 +8,11 @@ var devlogButton = new ui.Button("rect", "Devlogs")
 gamesButton.hoverMul = 0.95
 infoButton.hoverMul = 0.95
 devlogButton.hoverMul = 0.95
+
+ui.setFont("font", "assets/font.ttf", 0.8)
+ui.spacingMul = 1.1
+utils.setStyles()
+ui.scale = 0.5
 
 var page = "silver"
 

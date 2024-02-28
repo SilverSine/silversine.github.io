@@ -1,8 +1,3 @@
-
-var canvas = document.getElementById("canvas")
-var ctx = canvas.getContext("2d")
-ctx.off = {x: 0, y: 0}
-
 var favicon = document.getElementById("favicon")
 
 var cover = document.getElementById("cover")
@@ -12,11 +7,6 @@ var gameImg = new Image(); gameImg.src = "assets/game.png"
 var infoImg = new Image(); infoImg.src = "assets/info.png"
 var devlogImg = new Image(); devlogImg.src = "assets/devlog.png"
 var pfImg = new Image(); pfImg.src = "assets/pf.png"
-
-ui.setFont("font", "assets/font.ttf", 0.8)
-ui.spacingMul = 1.1
-utils.setStyles()
-ui.scale = 0.5
 
 var screenScale = 1
 var targetSize = {x: 1500*screenScale, y: 1000*screenScale}

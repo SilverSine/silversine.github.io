@@ -55,23 +55,26 @@ function gamesTick() {
 			y += 1
 		} 
 		
-		game.x = x * is + is/2 + off
-		game.y = y * (is * ia) + (is * ia)/2
-		game.width = is
-		game.height = is * ia
-		game.basic(ui.hovered(game.x+content.x-content.width/2, game.y+content.off.y, game.width, game.height))
-		game.draw()
+		if (y*is*ia < canvas.height-content.off.y && y*is*ia + is*ia > 0-content.off.y) {
+			game.x = x * is + is/2 + off
+			game.y = y * (is * ia) + (is * ia)/2
+			game.width = is
+			game.height = is * ia
+			game.basic(ui.hovered(game.x+content.x-content.width/2, game.y+content.off.y, game.width, game.height))
+			game.draw()
+		}
+		
 		x += 1
 	}
 
 	for (let game of gamesE) {
-		if (game.size > 1) {
+		if (game.size > 1 && game.y < canvas.height-content.off.y && game.y + is*ia > 0-content.off.y) {
 			game.front()
 		}
 	}
 
 	for (let game of gamesE) {
-		if (game.hovered) {
+		if (game.hovered && game.y < canvas.height-content.off.y && game.y + is*ia > 0-content.off.y) {
 			game.front()
 		}
 	}
