@@ -4,6 +4,7 @@ var tags = ["JS", "Scratch", "Godot", "Python", "Multiplayer", "2D", "3D", "Mobi
 var games = {
 	"Platformer": ["Platformer", "Random Platformer Game", "https://platformer.silverspace.online", "assets/games/platformer.webp", ["JS", "2D", "Beta", "Platformer", "Multiplayer", "Desktop"]],
 	"Speedwing": ["Speedwing", "Year 9 Digital Tech Project", "https://speedwing.silverspace.online", "assets/games/speedwing.webp", ["JS", "2D", "Speedrun", "Desktop", "Education"]],
+	"Quadtree Particles": ["Quadtree Particles", "Faster Particle Simulation", "https://quadtree-particles.silverspace.online", "assets/games/quadtree-particles.png", ["JS", "2D", "Simulation", "Desktop"]],
 	"Road Weaver": ["Road Weaver", "New Year, New Skills Game Jam submission", "https://silverspace.itch.io/road-weaver", "assets/games/road-weaver.webp", ["JS", "2D", "Desktop"]],
 	"Battle Cubes": ["Battle Cubes", "Multiplayer FPS Game", "https://battle-cubes.silverspace.online", "assets/games/battle-cubes.webp", ["JS", "3D", "Multiplayer", "Platformer", "Desktop"]],
 	"Space Shooter AI": ["Space Shoooter AI", "Neural network AI", "https://space-shooter-ai.silverspace.online", "assets/games/space-shooter-ai.webp", ["JS", "2D", "Desktop", "Simulation"]],
