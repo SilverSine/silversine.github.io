@@ -10,14 +10,15 @@ var devlogs = [
 
 var devlogS = []
 
-for (let devlog of devlogs) {
-    let y = 30*ui.fontSizeMul*ui.spacingMul*ui.measureText(30, devlog[0], {wrap: 1000}).lines + 50
-    if (devlog[2].length > 0) {
-        y += 315
+setTimeout(() => {
+    for (let devlog of devlogs) {
+        let y = 30*ui.fontSizeMul*ui.spacingMul*ui.measureText(30, devlog[0], {wrap: 1000}).lines + 50
+        if (devlog[2].length > 0) {
+            y += 315
+        }
+        devlogS.push(y)
     }
-    devlogS.push(y)
-}
-
+}, 1000)
 
 var devlogY = 0
 
@@ -63,7 +64,7 @@ function devlogsTick() {
             }
             
             if (i+1 < devlogs.length) ui.rect(content.width/2, y-25*su-30*su*ui.fontSizeMul/2, content.width, 5*su, [50, 50, 50, 1])
-        } else {
+        } else if (i < devlogS.length) {
             y += devlogS[i]*su
         }
         i++
