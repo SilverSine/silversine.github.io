@@ -96,6 +96,7 @@ function connectToServer() {
 
 connectToServer()
 
+var time = 0
 var particles = []
 
 function force(r, a, b=0.7) {
@@ -135,6 +136,8 @@ function tick(timestamp) {
 	// console.log(Math.round(new Date().getTime()/1000 / 86400)-19720)
 	ui.resizeCanvas()
 	ui.getSu()
+
+	time += delta
 
 	if (particles.length == 0) {
 		for (let i = 0; i < 100; i++) {

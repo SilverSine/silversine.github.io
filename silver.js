@@ -16,6 +16,11 @@ ui.scale = 0.5
 
 var page = "silver"
 
+var scrollX = 0
+var scrollY = 0
+var svx = 0
+var svy = 0
+
 function silverTick() {
 	ui.text(sidebar/2, 50*su, 75*su, "Silver", {align: "center"})
 
@@ -26,31 +31,59 @@ function silverTick() {
 
 	let iw = Math.ceil(content.width / (is))
 	let ih = Math.ceil(content.height / (is*ia))
+
+	let fw = iw*is
+	let fh = ih*is*ia
+
+	let mx = ((content.width/2+400*su) - mouse.x)
+	let my = (content.height/2 - mouse.y)
+	let md = Math.sqrt(mx*mx + my*my)
+	mx /= md
+	my /= md
+
+	svx = utils.lerp(svx, mx, delta*5)
+	svy = utils.lerp(svy, my, delta*5)
+
+	scrollX += svx * 50 * delta
+	scrollY += svy * 50 * delta
+
 	for (let y = 0; y < ih; y++) {
 		for (let x = 0; x < iw; x++) {
 			let i = y*iw + x
 			let oldA = ctx.globalAlpha
 			ctx.globalAlpha *= imgVis[i % imgVis.length]
+
 			ui.img(x * is + is/2, y * is*ia + is*ia/2, is, is*ia, imgs[i % imgs.length])
 			ctx.globalAlpha = oldA
 			// ui.rect(ctx, x, [x/iw*255, y/ih*255, 0, 1])
 		}
 	}
 
+	let s = 500*su+Math.cos(time)*10*su
+	
+	ctx.save()
+
+	ctx.translate(content.width/2 + sidebar, content.height/2)
+	ctx.rotate(Math.sin(time)/16)
+
 	ctx.save()
 
 	ctx.beginPath()
-	ctx.arc(content.width/2 + sidebar, content.height/2, 500*su/2, 0, Math.PI*2)
+	ctx.arc(0, 0, s/2, 0, Math.PI*2)
 	ctx.closePath()
 	ctx.clip()
 
-	ui.img(content.width/2, content.height/2, 500*su, 500*su, pfImg)
+	ui.relative = false
+	ui.img(0, 0, s, s, pfImg)
+	ui.relative = true
 
 	ctx.restore()
-
+	
 	ctx.strokeStyle = "white"
 	ctx.lineWidth = 10*su
 	ctx.stroke()
+
+	ctx.restore()
 
 	ui.setC()
 
@@ -79,11 +112,11 @@ function silverTick() {
 	ui.img(sidebar/2+90*su, 150*su + 55*su, 45*su, 45*su, infoImg)
 	ui.img(sidebar/2+70*su, 150*su + 55*su*2, 45*su, 45*su, devlogImg)
 
-	ctx.save()
-	ctx.translate(sidebar/2-120*su, 140*su + 55*su*2)
-	ctx.rotate(-Math.PI/16)
-	ui.text(0, 0, 20*su, "NEW", {colour: [0, 200, 255, 1]})
-	ctx.restore()
+	// ctx.save()
+	// ctx.translate(sidebar/2-120*su, 140*su + 55*su*2)
+	// ctx.rotate(-Math.PI/16)
+	// ui.text(0, 0, 20*su, "NEW", {colour: [0, 200, 255, 1]})
+	// ctx.restore()
 
 	if (infoButton.hovered() && mouse.lclick) {
 		infoButton.click()
