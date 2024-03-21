@@ -98,8 +98,8 @@ connectToServer()
 
 var particles = []
 
-function force(r, a) {
-    let beta = 0.7
+function force(r, a, b=0.7) {
+    let beta = b
 	if (r < beta) {
 		return r / beta - 1
 	} else if (beta < r && r < 1) {
@@ -141,6 +141,8 @@ function tick(timestamp) {
 			particles.push({x: Math.random()*canvas.width, y: Math.random()*canvas.height, dx: (Math.random()*2)-1, dy: (Math.random()*2)-1})
 		}
 	}
+
+	particles[100] = {x: mouse.x, y: mouse.y}
 
 	// var w = window.innerWidth
 	// var h = window.innerHeight
@@ -201,6 +203,11 @@ function tick(timestamp) {
 				particle.dy += (particle2.y - particle.y) / d * f * delta
 			}
 		}
+
+		let dm = Math.sqrt((particle.x-mouse.x)**2 + (particle.y-mouse.y)**2)
+		let fm = force(dm / (100*su), 1, 0.2) * 5
+		particle.dx += (mouse.x - particle.x) / dm * fm * delta
+		particle.dy += (mouse.y - particle.y) / dm * fm * delta
 	}
 
 	for (let particle of particles) {
