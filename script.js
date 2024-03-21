@@ -96,6 +96,19 @@ function connectToServer() {
 
 connectToServer()
 
+var particles = []
+
+function force(r, a) {
+    let beta = 0.7
+	if (r < beta) {
+		return r / beta - 1
+	} else if (beta < r && r < 1) {
+		return a * (1 - Math.abs(2 * r - 1 - beta) / (1 - beta))
+	} else {
+		return 0
+	}
+}
+
 function tick(timestamp) {
 	requestAnimationFrame(tick)
 
@@ -122,6 +135,13 @@ function tick(timestamp) {
 	// console.log(Math.round(new Date().getTime()/1000 / 86400)-19720)
 	ui.resizeCanvas()
 	ui.getSu()
+
+	if (particles.length == 0) {
+		for (let i = 0; i < 100; i++) {
+			particles.push({x: Math.random()*canvas.width, y: Math.random()*canvas.height, dx: (Math.random()*2)-1, dy: (Math.random()*2)-1})
+		}
+	}
+
 	// var w = window.innerWidth
 	// var h = window.innerHeight
 
@@ -154,6 +174,39 @@ function tick(timestamp) {
 
 	ctx.fillStyle = "#161616"
 	ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+	let speed = 100
+	for (let particle of particles) {
+		particle.dx = Math.min(Math.max(particle.dx, -2), 2)
+		particle.dy = Math.min(Math.max(particle.dy, -2), 2)
+
+		particle.x += particle.dx * speed * delta
+		particle.y += particle.dy * speed * delta
+
+		let border = 100*su
+		if (particle.x < -border) {particle.x = canvas.width+border}
+		if (particle.y < -border) {particle.y = canvas.height+border}
+		if (particle.x > canvas.width+border) {particle.x = -border}
+		if (particle.y > canvas.height+border) {particle.y = -border}
+
+		for (let particle2 of particles) {
+			if (particle != particle2) {
+				let d = Math.sqrt((particle.x-particle2.x)**2 + (particle.y-particle2.y)**2)
+				if (d < 100*su) {
+					ui.line(particle.x, particle.y, particle2.x, particle2.y, 5*su, [35, 35, 35, 1 - d / (100*su)])
+				}
+
+				let f = force(d / (100*su), 1) * 1
+				particle.dx += (particle2.x - particle.x) / d * f * delta
+				particle.dy += (particle2.y - particle.y) / d * f * delta
+			}
+		}
+	}
+
+	for (let particle of particles) {
+		ui.circle(particle.x, particle.y, 5*su, [50, 50, 50, 1])
+	}
+
 	content.bounds.minY = 0
 	if (page == "games") {
 		content.x += cSidebar/2
@@ -266,9 +319,20 @@ for (let i in imgs) {
 
 input.scroll = (x, y) => {
 	if (content.hovered()) {
+		let lx = content.off.x
+		let ly = content.off.y
 		content.off.x -= x
 		content.off.y -= y
 		content.update()
+
+		let mx = content.off.x - lx
+		let my = content.off.y - ly
+		for (let particle of particles) {
+			if (particle.x > 400*su) {
+				particle.x += mx / 4
+				particle.y += my / 4
+			}
+		}
 	}
 }
 
