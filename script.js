@@ -113,6 +113,25 @@ var particleColour = 195
 var maxSpeed = 2
 var trails = true
 
+function loadVar(name) {
+	var data = localStorage.getItem(name)
+	if (data != null) window[name] = data
+}
+
+function saveVar(name) {
+	localStorage.setItem(name, window[name])
+}
+
+loadVar("particleSpeed")
+loadVar("gravity")
+loadVar("mouseRange")
+loadVar("particleRange")
+loadVar("mouseStrength")
+loadVar("gravityStrength")
+loadVar("particleColour")
+loadVar("maxSpeed")
+loadVar("trails")
+
 function force(r, a, b=0.7) {
     let beta = b
 	if (r < beta) {

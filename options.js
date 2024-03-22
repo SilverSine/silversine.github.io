@@ -68,6 +68,7 @@ function optionsTick() {
 			particleColourS.value = Math.round(particleColourS.convert(mouse.x))
 			particleColourS.capValue()
 			particleColour = particleColourS.value
+			saveVar("particleColour")
 		}
 	}
 
@@ -84,6 +85,7 @@ function optionsTick() {
 			gravityS.value = gravityS.convert(mouse.x)
 			gravityS.capValue()
 			gravity = 1 - gravityS.value
+			saveVar("gravity")
 		}
 	}
 
@@ -100,6 +102,7 @@ function optionsTick() {
 			particleRangeS.value = Math.round(particleRangeS.convert(mouse.x))
 			particleRangeS.capValue()
 			particleRange = particleRangeS.value
+			saveVar("particleRange")
 		}
 	}
 
@@ -116,6 +119,7 @@ function optionsTick() {
 			mouseRangeS.value = Math.round(mouseRangeS.convert(mouse.x))
 			mouseRangeS.capValue()
 			mouseRange = mouseRangeS.value
+			saveVar("mouseRange")
 		}
 	}
 
@@ -132,6 +136,7 @@ function optionsTick() {
 			gravityStrengthS.value = Math.round(gravityStrengthS.convert(mouse.x))
 			gravityStrengthS.capValue()
 			gravityStrength = gravityStrengthS.value
+			saveVar("gravityStrength")
 		}
 	}
 
@@ -148,6 +153,7 @@ function optionsTick() {
 			mouseStrengthS.value = Math.round(mouseStrengthS.convert(mouse.x))
 			mouseStrengthS.capValue()
 			mouseStrength = mouseStrengthS.value
+			saveVar("mouseStrength")
 		}
 	}
 
@@ -164,6 +170,7 @@ function optionsTick() {
 			maxSpeedS.value = Math.round(maxSpeedS.convert(mouse.x))
 			maxSpeedS.capValue()
 			maxSpeed = maxSpeedS.value
+			saveVar("maxSpeed")
 		}
 	}
 
@@ -180,6 +187,7 @@ function optionsTick() {
 			trailS.value = Math.round(trailS.convert(mouse.x))
 			trailS.capValue()
 			trails = trailS.value == 1
+			saveVar("trails")
 		}
 	}
 
