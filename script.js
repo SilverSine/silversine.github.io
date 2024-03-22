@@ -7,6 +7,8 @@ var gameImg = new Image(); gameImg.src = "assets/game.png"
 var infoImg = new Image(); infoImg.src = "assets/info.png"
 var devlogImg = new Image(); devlogImg.src = "assets/devlog.png"
 var pfImg = new Image(); pfImg.src = "assets/pf.png"
+var optionsImg = new Image(); optionsImg.src = "assets/options.png"
+var chatImg = new Image(); chatImg.src = "assets/chat.png"
 
 var screenScale = 1
 var targetSize = {x: 1500*screenScale, y: 1000*screenScale}
@@ -16,7 +18,7 @@ var sidebar = 0*su
 var tSidebar = 0*su
 var cSidebar = 0*su
 
-var alphas = {silver: 1, games: 0, info: 0, devlogs: 0}
+var alphas = {silver: 1, games: 0, info: 0, devlogs: 0, options: 0}
 
 var lastTime = 0
 var su = 1
@@ -98,6 +100,18 @@ connectToServer()
 
 var time = 0
 var particles = []
+var trailCooldown = 0
+var trailCooldown2 = 0
+
+var particleSpeed = 1
+var	gravity = 0.7
+var mouseRange = 100
+var particleRange = 100
+var mouseStrength = 10
+var gravityStrength = 1
+var particleColour = 195
+var maxSpeed = 2
+var trails = true
 
 function force(r, a, b=0.7) {
     let beta = b
@@ -108,6 +122,34 @@ function force(r, a, b=0.7) {
 	} else {
 		return 0
 	}
+}
+
+function hslToRgb(h, s, l, a) {
+	h /= 360
+	s /= 100
+	l /= 100
+    let r, g, b
+
+    if (s == 0) {
+        r = g = b = l
+    } else {
+        const hue2rgb = function hue2rgb(p, q, t) {
+            if (t < 0) t += 1
+            if (t > 1) t -= 1
+            if (t < 1 / 6) return p + (q - p) * 6 * t
+            if (t < 1 / 2) return q
+            if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6
+            return p
+        };
+
+        const q = l < 0.5 ? l * (1 + s) : l + s - l * s
+        const p = 2 * l - q
+        r = hue2rgb(p, q, h + 1 / 3)
+        g = hue2rgb(p, q, h)
+        b = hue2rgb(p, q, h - 1 / 3)
+    }
+
+    return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255), a]
 }
 
 function tick(timestamp) {
@@ -141,11 +183,13 @@ function tick(timestamp) {
 
 	if (particles.length == 0) {
 		for (let i = 0; i < 100; i++) {
-			particles.push({x: Math.random()*canvas.width, y: Math.random()*canvas.height, dx: (Math.random()*2)-1, dy: (Math.random()*2)-1})
+			particles.push({x: Math.random()*canvas.width, y: Math.random()*canvas.height, dx: (Math.random()*2)-1, dy: (Math.random()*2)-1, trail: []})
 		}
 	}
 
-	particles[100] = {x: mouse.x, y: mouse.y}
+	if (!particles[100]) particles[100] = {x: mouse.x, y: mouse.y, dx: 0, dy: 0, trail: []}
+	particles[100].x = mouse.x
+	particles[100].y = mouse.y
 
 	// var w = window.innerWidth
 	// var h = window.innerHeight
@@ -180,41 +224,82 @@ function tick(timestamp) {
 	ctx.fillStyle = "#161616"
 	ctx.fillRect(0, 0, canvas.width, canvas.height)
 
+	trailCooldown -= delta
+	trailCooldown2 -= delta
+	if (trailCooldown <= 0) {
+		trailCooldown = 0.1
+		let i = 0
+		for (let particle of particles) {
+			if (i == 100) continue
+			particle.trail.push([particle.x, particle.y])
+			while (particle.trail.length > 10) {
+				particle.trail.splice(0, 1)
+			}
+			i++
+		}
+	}
+
+	if (trailCooldown2 <= 0) {
+		trailCooldown2 = 1/60
+		particles[100].trail.push([particles[100].x, particles[100].y])
+		while (particles[100].trail.length > 10) {
+			particles[100].trail.splice(0, 1)
+		}
+	}
+
 	let speed = 100
 	for (let particle of particles) {
-		particle.dx = Math.min(Math.max(particle.dx, -2), 2)
-		particle.dy = Math.min(Math.max(particle.dy, -2), 2)
+		particle.dx = Math.min(Math.max(particle.dx, -maxSpeed), maxSpeed)
+		particle.dy = Math.min(Math.max(particle.dy, -maxSpeed), maxSpeed)
 
 		particle.x += particle.dx * speed * delta
 		particle.y += particle.dy * speed * delta
 
-		let border = 100*su
-		if (particle.x < -border) {particle.x = canvas.width+border}
-		if (particle.y < -border) {particle.y = canvas.height+border}
-		if (particle.x > canvas.width+border) {particle.x = -border}
-		if (particle.y > canvas.height+border) {particle.y = -border}
+		if (trails) {
+			let lx
+			let ly
+			let i = 0
+			for (let point of particle.trail) {
+				if (lx && ly) {
+					ui.line(lx, ly, point[0], point[1], 5*su, hslToRgb(particleColour, 100, 25, i/particle.trail.length / 3))
+				}
+				lx = point[0]
+				ly = point[1]
+				i++
+			}
+
+			if (lx && ly) {
+				ui.line(lx, ly, particle.x, particle.y, 5*su, hslToRgb(particleColour, 100, 25, 1/3))
+			}
+		}
+		
+		let border = particleRange*su
+		if (particle.x < -border) {particle.x = canvas.width+border; particle.trail = []}
+		if (particle.y < -border) {particle.y = canvas.height+border; particle.trail = []}
+		if (particle.x > canvas.width+border) {particle.x = -border; particle.trail = []}
+		if (particle.y > canvas.height+border) {particle.y = -border; particle.trail = []}
 
 		for (let particle2 of particles) {
 			if (particle != particle2) {
 				let d = Math.sqrt((particle.x-particle2.x)**2 + (particle.y-particle2.y)**2)
-				if (d < 100*su) {
-					ui.line(particle.x, particle.y, particle2.x, particle2.y, 5*su, [35, 35, 35, 1 - d / (100*su)])
+				if (d < particleRange*su) {
+					ui.line(particle.x, particle.y, particle2.x, particle2.y, 5*su, hslToRgb(particleColour, 100, 25, 1 - d / (100*su)))
 				}
 
-				let f = force(d / (100*su), 1) * 1
+				let f = force(d / (particleRange*su), 1, gravity) * gravityStrength
 				particle.dx += (particle2.x - particle.x) / d * f * delta
 				particle.dy += (particle2.y - particle.y) / d * f * delta
 			}
 		}
 
 		let dm = Math.sqrt((particle.x-mouse.x)**2 + (particle.y-mouse.y)**2)
-		let fm = force(dm / (100*su), 1, 0.2) * 5
+		let fm = force(dm / (mouseRange*su), 1, gravity) * mouseStrength
 		particle.dx += (mouse.x - particle.x) / dm * fm * delta
 		particle.dy += (mouse.y - particle.y) / dm * fm * delta
 	}
 
 	for (let particle of particles) {
-		ui.circle(particle.x, particle.y, 5*su, [50, 50, 50, 1])
+		ui.circle(particle.x, particle.y, 5*su, hslToRgb(particleColour, 100, 50, 1))
 	}
 
 	content.bounds.minY = 0
@@ -258,6 +343,14 @@ function tick(timestamp) {
 		devlogsTick()
 		if (page == "devlogs") {
 			document.title = "Devlogs"
+			// favicon.href = "assets/game.png"
+		}
+	}
+	if (alphas.options > 0) {
+		ctx.globalAlpha = alphas.options
+		optionsTick()
+		if (page == "options") {
+			document.title = "Options"
 			// favicon.href = "assets/game.png"
 		}
 	}

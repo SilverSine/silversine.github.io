@@ -5,9 +5,13 @@ ctx.off = {x: 0, y: 0}
 var gamesButton = new ui.Button("rect", "Games")
 var infoButton = new ui.Button("rect", "Information")
 var devlogButton = new ui.Button("rect", "Devlogs")
+var optionsButton = new ui.Button("rect", "Options")
+var chatButton = new ui.Button("rect", "Chat")
 gamesButton.hoverMul = 0.95
 infoButton.hoverMul = 0.95
 devlogButton.hoverMul = 0.95
+optionsButton.hoverMul = 0.95
+chatButton.hoverMul = 0.95
 
 ui.setFont("font", "assets/font.ttf", 0.8)
 ui.spacingMul = 1.1
@@ -108,15 +112,37 @@ function silverTick() {
 	devlogButton.bgColour = [0.25*255, 0.25*255, 0.25*255, 1]
 	devlogButton.draw()
 
+	optionsButton.set(sidebar/2, 150*su + 55*su*3, sidebar*0.9, 50*su)
+	optionsButton.basic()
+	optionsButton.textSize = 35*su
+	optionsButton.textOff = -50*su/2
+	optionsButton.bgColour = [0.25*255, 0.25*255, 0.25*255, 1]
+	optionsButton.draw()
+
+	chatButton.set(sidebar/2, 150*su + 55*su*4, sidebar*0.9, 50*su)
+	chatButton.basic()
+	chatButton.textSize = 35*su
+	chatButton.textOff = -50*su/2
+	chatButton.bgColour = [0.25*255, 0.25*255, 0.25*255, 1]
+	chatButton.draw()
+
 	ui.img(sidebar/2+60*su, 150*su, 50*su, 50*su, gameImg)
 	ui.img(sidebar/2+90*su, 150*su + 55*su, 45*su, 45*su, infoImg)
 	ui.img(sidebar/2+70*su, 150*su + 55*su*2, 45*su, 45*su, devlogImg)
+	ui.img(sidebar/2+60*su, 150*su + 55*su*3, 45*su, 45*su, optionsImg)
+	ui.img(sidebar/2+45*su, 150*su + 55*su*4, 45*su, 45*su, chatImg)
 
-	// ctx.save()
-	// ctx.translate(sidebar/2-120*su, 140*su + 55*su*2)
-	// ctx.rotate(-Math.PI/16)
-	// ui.text(0, 0, 20*su, "NEW", {colour: [0, 200, 255, 1]})
-	// ctx.restore()
+	ctx.save()
+	ctx.translate(sidebar/2-115*su, 140*su + 55*su*3)
+	ctx.rotate(-Math.PI/16)
+	ui.text(0, 0, 20*su, "NEW", {colour: [0, 200, 255, 1]})
+	ctx.restore()
+
+	ctx.save()
+	ctx.translate(sidebar/2-115*su, 140*su + 55*su*4)
+	ctx.rotate(-Math.PI/16)
+	ui.text(0, 0, 15*su, "COMING SOON", {colour: [255, 200, 0, 1]})
+	ctx.restore()
 
 	if (infoButton.hovered() && mouse.lclick) {
 		infoButton.click()
@@ -130,8 +156,12 @@ function silverTick() {
 	    devlogButton.click()
 		page = "devlogs"
     }
+	if (optionsButton.hovered() && mouse.lclick) {
+	    optionsButton.click()
+		page = "options"
+    }
 
-	let lines = ui.text(10*su, 150*su + 55*su*3, 20*su, "This is my website, it has all the main games I have made and has some information about me and what I am doing right now.", {wrap: sidebar-10*su}).lines
+	let lines = ui.text(10*su, 150*su + 55*su*5, 20*su, "This is my website, it has all the main games I have made and has some information about me and what I am doing right now.", {wrap: sidebar-10*su}).lines
 
-	ui.rect(sidebar/2, 150*su+55*su*3 + lines*20*su+10*su, sidebar, 5*su, [255, 255, 255, 1])
+	ui.rect(sidebar/2, 150*su+55*su*5 + lines*20*su+10*su, sidebar, 5*su, [255, 255, 255, 1])
 }
