@@ -18,13 +18,12 @@ var sidebar = 0*su
 var tSidebar = 0*su
 var cSidebar = 0*su
 
-var alphas = {silver: 1, games: 0, info: 0, devlogs: 0, options: 0}
+var alphas = {silver: 1, games: 0, info: 0, devlogs: 0, options: 0, chat: 0}
 
 var lastTime = 0
 var su = 1
 
 var gameAddon = 0
-var connected = false
 
 var content = new ui.Canvas()
 
@@ -35,8 +34,6 @@ ui.textShadow.bottom = "auto"
 ui.textShadow.multiply = 0.75
 
 canvas.style.display = "block"
-
-var ws
 
 var id = ""
 var idLoaded = localStorage.getItem("id")
@@ -49,54 +46,6 @@ if (idLoaded) {
 	}
 	localStorage.setItem("id", id)
 }
-
-function getViews() {
-	ws.send(JSON.stringify({getViews: true}))
-}
-
-function getClicks() {
-	ws.send(JSON.stringify({getClicks: true}))
-}
-
-var wConnect = false
-
-function connectToServer() {
-	if (ws) {
-		if (ws.readyState == WebSocket.OPEN) {
-			ws.close()
-		}
-	}
-	console.log("Connecting...")
-	connected = false
-	ws = new WebSocket("wss://server.silverspace.online:443")
-	ws.addEventListener("open", (event) => {
-		ws.send(JSON.stringify({connect: "silver"}))
-	})
-	
-	ws.addEventListener("message", (event) => {
-		let msg = JSON.parse(event.data)
-		if (msg.connected) {
-			console.log("Connected")
-			ws.send(JSON.stringify({view: id}))
-		}
-		if (msg.ping && !document.hidden) {
-			ws.send(JSON.stringify({ping: true}))
-		}
-		if (msg.views) {
-			console.log(JSON.stringify(msg.views))
-		}
-		if (msg.clicks) {
-			console.log(JSON.stringify(msg.clicks))
-		}
-	})
-
-	ws.addEventListener("close", (event) => {
-		console.log("Disconnected")
-		wConnect = true
-	})
-}
-
-connectToServer()
 
 var time = 0
 var particles = []
@@ -112,6 +61,7 @@ var gravityStrength = 1
 var particleColour = 195
 var maxSpeed = 2
 var trails = true
+var deleteMsgPassword = "no"
 
 function loadVar(name) {
 	var data = localStorage.getItem(name)
@@ -120,6 +70,11 @@ function loadVar(name) {
 
 function saveVar(name) {
 	localStorage.setItem(name, window[name])
+}
+
+function setDeleteMsgPassword(password) {
+	deleteMsgPassword = password
+	saveVar("deleteMsgPassword")
 }
 
 loadVar("particleSpeed")
@@ -131,6 +86,10 @@ loadVar("gravityStrength")
 loadVar("particleColour")
 loadVar("maxSpeed")
 loadVar("trails")
+loadVar("usernameR")
+loadVar("deleteMsgPassword")
+
+username.text = usernameR
 
 function force(r, a, b=0.7) {
     let beta = b
@@ -373,6 +332,14 @@ function tick(timestamp) {
 			// favicon.href = "assets/game.png"
 		}
 	}
+	if (alphas.chat > 0) {
+		ctx.globalAlpha = alphas.chat
+		chatTick()
+		if (page == "chat") {
+			document.title = "Chat"
+			// favicon.href = "assets/game.png"
+		}
+	}
 
 	ctx.globalAlpha = 1
 
@@ -451,6 +418,22 @@ input.scroll = (x, y) => {
 		let my = content.off.y - ly
 		for (let particle of particles) {
 			if (particle.x > 400*su) {
+				particle.x += mx / 4
+				particle.y += my / 4
+			}
+		}
+	}
+	if (chatC.hovered() && page == "chat") {
+		let lx = chatC.off.x
+		let ly = chatC.off.y
+		chatC.off.x -= x
+		chatC.off.y -= y
+		chatC.update()
+
+		let mx = chatC.off.x - lx
+		let my = chatC.off.y - ly
+		for (let particle of particles) {
+			if (particle.x > 500*su && particle.x < 500*su+chatC.width && particle.y > 100*su && particle.y < canvas.height-200*su) {
 				particle.x += mx / 4
 				particle.y += my / 4
 			}

@@ -139,9 +139,10 @@ function silverTick() {
 	ctx.restore()
 
 	ctx.save()
-	ctx.translate(sidebar/2-115*su, 140*su + 55*su*4)
+	ctx.translate(sidebar/2-95*su, 140*su + 55*su*4)
 	ctx.rotate(-Math.PI/16)
-	ui.text(0, 0, 15*su, "COMING SOON", {colour: [255, 200, 0, 1]})
+	ui.text(0, 0, 20*su, "NEW", {colour: [0, 200, 255, 1]})
+	// ui.text(0, 0, 15*su, "COMING SOON", {colour: [255, 200, 0, 1]})
 	ctx.restore()
 
 	if (infoButton.hovered() && mouse.lclick) {
@@ -159,6 +160,10 @@ function silverTick() {
 	if (optionsButton.hovered() && mouse.lclick) {
 	    optionsButton.click()
 		page = "options"
+    }
+	if (chatButton.hovered() && mouse.lclick) {
+	    chatButton.click()
+		page = "chat"
     }
 
 	let lines = ui.text(10*su, 150*su + 55*su*5, 20*su, "This is my website, it has all the main games I have made and has some information about me and what I am doing right now.", {wrap: sidebar-10*su}).lines
