@@ -7,6 +7,9 @@ var chatBox = new ui.TextBox("Type here!")
 var chat = ["helo there", "how's it going", "it's going great", "how about you?", "awesome, i actually had a awesome day, want to hear about it?", "nah L"]
 var chatC = new ui.Canvas()
 
+var tscroll = 0
+var tscrolling = false
+
 function chatTick() {
     ui.text(sidebar / 2, 50 * su, 75 * su, "Chat", {align: "center"})
 	
@@ -61,25 +64,31 @@ function chatTick() {
     ui.setC(chatC)
 
     let lines2 = ui.text(10*su, 25*su, 30*su, chat.join(" \n"), {wrap: chatC.width-30*su}).lines
-    chatC.bounds.minY = -lines2*30*su*ui.fontSizeMul*ui.spacingMul + chatC.height + 15*su
-
+    chatC.bounds.minY = -lines2*30*su*ui.fontSizeMul*ui.spacingMul + chatC.height - 15*su
+    if (!tscrolling) chatC.update()
     if (chatC.hovered()) {
         let y = 125*su-15*su
         let i = 0
-        while (y <= mouse.y && i < chat.length) {
+        while (y <= mouse.y-chatC.off.y && i < chat.length) {
             y += ui.measureText(30*su, chat[i], {wrap: chatC.width-30*su}).lines * 30*su*ui.fontSizeMul*ui.spacingMul
             i++
         }
         i--
         if (i < 0) i = 0
         if (keys["ShiftLeft"]) {
-            
             ui.rect(0, y-100*su-15*su, 25*su, 25*su, [255, 0, 0, 1])
             if (mouse.lclick) {
                 deleteMsg(i)
             }
         }
         
+    }
+
+    if (Math.abs(tscroll - chatC.off.y) > 0.01 && tscrolling) {
+        chatC.off.y = utils.lerp(chatC.off.y, tscroll, delta*10)
+    } else {
+        if (tscrolling) chatC.off.y = tscroll
+        tscrolling = false
     }
 
     chatC.drawScroll({x: 10*su, y: 10*su}, 10*su)
@@ -116,7 +125,8 @@ input.keyPressAlways = (event) => {
 			if (chat.length > 100) {
 				chat.splice(0, 1)
 			}
-			
+			tscroll = ui.measureText(30*su, chat.join(" \n"), {wrap: chatC.width-30*su}).lines*-30*su*ui.fontSizeMul*ui.spacingMul + chatC.height - 15*su
+            tscrolling = true
 		}
 	}
 }

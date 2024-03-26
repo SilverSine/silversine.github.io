@@ -199,6 +199,8 @@ function tick(timestamp) {
 	content.x = sidebar+2.5*su + content.width/2
 	content.y = canvas.height/2
 
+	chatC.set(content.width/2+400*su, content.height/2-50*su, content.width-200*su, content.height-300*su)
+
 	ctx.fillStyle = "#161616"
 	ctx.fillRect(0, 0, canvas.width, canvas.height)
 

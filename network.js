@@ -48,15 +48,29 @@ function connectToServer() {
 		}
         if (msg.history) {
             chat = msg.history
+			setTimeout(() => {
+				chatC.off.y = ui.measureText(30*su, chat.join(" \n"), {wrap: chatC.width-30*su}).lines*-30*su*ui.fontSizeMul*ui.spacingMul + chatC.height - 15*su
+				chatC.loff.y = chatC.off.y
+			}, 1000)
         }
         if (msg.chat) {
             chat.push(msg.chat)
             if (chat.length > 100) {
 				chat.splice(0, 1)
 			}
+			let tscroll2 = ui.measureText(30*su, chat.join(" \n"), {wrap: chatC.width-30*su}).lines*-30*su*ui.fontSizeMul*ui.spacingMul + chatC.height - 15*su
+			if (Math.abs(chatC.off.y - tscroll2) < 400*su) {
+				tscroll = tscroll2
+           		tscrolling = true
+			}
         } 
         if (msg.deleteMsg) {
             chat.splice(msg.deleteMsg, 1)
+			let tscroll2 = ui.measureText(30*su, chat.join(" \n"), {wrap: chatC.width-30*su}).lines*-30*su*ui.fontSizeMul*ui.spacingMul + chatC.height - 15*su
+			if (chatC.off.y < tscroll2) {
+				tscroll = tscroll2
+           		tscrolling = true
+			}
         }
 	})
 
