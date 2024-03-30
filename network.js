@@ -59,7 +59,7 @@ function connectToServer() {
 				chat.splice(0, 1)
 			}
 			let tscroll2 = ui.measureText(30*su, chat.join(" \n"), {wrap: chatC.width-30*su}).lines*-30*su*ui.fontSizeMul*ui.spacingMul + chatC.height - 15*su
-			if (Math.abs(chatC.off.y - tscroll2) < 400*su) {
+			if (Math.abs(chatC.off.y - tscroll2) < 100*su) {
 				tscroll = tscroll2
            		tscrolling = true
 			}

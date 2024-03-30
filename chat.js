@@ -62,8 +62,6 @@ function chatTick() {
     ui.setC(chatC)
 
     let lines2 = ui.text(10*su, 25*su, 30*su, chat.join(" \n"), {wrap: chatC.width-30*su}).lines
-    chatC.bounds.minY = -lines2*30*su*ui.fontSizeMul*ui.spacingMul + chatC.height - 15*su
-    if (!tscrolling) chatC.update()
     if (chatC.hovered()) {
         let y = 125*su-15*su
         let i = 0
@@ -82,10 +80,18 @@ function chatTick() {
         
     }
 
+    let loffy = chatC.off.y
     if (Math.abs(tscroll - chatC.off.y) > 0.01 && tscrolling) {
         chatC.off.y = utils.lerp(chatC.off.y, tscroll, delta*10)
     } else {
         if (tscrolling) chatC.off.y = tscroll
+        tscrolling = false
+    }
+
+    chatC.bounds.minY = -lines2*30*su*ui.fontSizeMul*ui.spacingMul + chatC.height - 15*su
+    if (tscrolling) chatC.bounds.minY -= 30*su
+    chatC.update()
+    if (Math.abs(chatC.off.y - loffy) == 0) {
         tscrolling = false
     }
 

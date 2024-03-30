@@ -426,6 +426,7 @@ input.scroll = (x, y) => {
 		}
 	}
 	if (chatC.hovered() && page == "chat") {
+		tscrolling = false
 		let lx = chatC.off.x
 		let ly = chatC.off.y
 		chatC.off.x -= x
