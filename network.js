@@ -49,8 +49,11 @@ function connectToServer() {
         if (msg.history) {
             chat = msg.history
 			setTimeout(() => {
-				chatC.off.y = ui.measureText(30*su, chat.join(" \n"), {wrap: chatC.width-30*su}).lines*-30*su*ui.fontSizeMul*ui.spacingMul + chatC.height - 15*su
-				chatC.loff.y = chatC.off.y
+				let lines2 = ui.measureText(30*su, chat.join(" \n"), {wrap: chatC.width-30*su}).lines
+				chatC.off.y = -lines2*30*su*ui.fontSizeMul*ui.spacingMul + chatC.height - 15*su
+				chatC.bounds.minY = chatC.off.y
+				chatC.loff.y = -lines2*30*su*ui.fontSizeMul*ui.spacingMul + chatC.height - 15*su
+				chatC.update()
 			}, 1000)
         }
         if (msg.chat) {
