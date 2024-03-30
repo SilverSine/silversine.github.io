@@ -47,8 +47,6 @@ function chatTick() {
         saveVar("usernameR")
     }
 
-    
-
     chatBox.text = chatBox.text.substring(0, 100)
     chatBox.set(content.width/2, content.height-150*su, content.width-250*su, 50*su)
     chatBox.outlineSize = 10*su
