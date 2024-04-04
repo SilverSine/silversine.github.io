@@ -6,7 +6,7 @@ var hubImg = new Image(); hubImg.src = "assets/favicon.png"
 var gameImg = new Image(); gameImg.src = "assets/game.png"
 var infoImg = new Image(); infoImg.src = "assets/info.png"
 var devlogImg = new Image(); devlogImg.src = "assets/devlog.png"
-var pfImg = new Image(); pfImg.src = "assets/pf.png"
+var pfImg = new Image(); pfImg.src = "assets/pf4.png"
 var optionsImg = new Image(); optionsImg.src = "assets/options.png"
 var chatImg = new Image(); chatImg.src = "assets/chat.png"
 
