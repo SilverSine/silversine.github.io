@@ -1,5 +1,6 @@
 
 var devlogs = [
+    ["Tritag 2 is now multiplayer! You can find it in the games section on my website by clicking the beta filter. There's not actually any gameplay, but i thought it would be good to make the game playable to everyone for some feedback if needed. \n \nCurrently you can spin to gain dashes and you can give yourself and name and colour, the game actually uses the engine behind Platformer which was a game that i made a month ago of which i abandoned, so it's good that i had a use. My next steps are well, the tag part of the name, which might include lobbies, but we'll just have to wait and see.", "2024/4/17", ["assets/games/tritag-2.webp"]],
     ["It's been a while since my last devlog, and that's because i've been taking a break, i usually have them after finishing a project. I've been working on a game very simular to Speedwing and Tritag, tritag is down right now because replit's servers now cost too much money, and there's no easy way to migrate the server. So i'm going to call this game Tritag 2, or maybe come up with some other name, instead of sliding along walls in the game, or just being able to dash all the time, you have to do a 360 flip to gain a dash which you can pair with the shift mode to spin faster. I'm planning to host a live demo of this game in the next few days, i just want to get a map coded and multiplayer would be awesome.", "2024/4/15", ["assets/devlogs/tritag-2-charging-up.webp", "assets/devlogs/tritag-2-dash-rebound.webp", "assets/devlogs/tritag-2-dashing.webp"]],
     ["I've made a little chat system that will allow for me to receive feedback more directly and for everyone to chat, i don't mind if the chat is not relevant to my games, but i will delete anything that's too inappropriate.", "2023/3/23", ["assets/devlogs/chat.webp"]],
     ["Done some quick work on making the background more interesting, i made the colours more vibrant, and there's now a new options menu where you can change the colour, and how the particle react to each other and the mouse, i'm also going to make a chatroom section on my website so everyone can give feedback, and everyone can chat with each other.", "2024/3/22", ["assets/devlogs/new-bg-1.webp", "assets/devlogs/new-bg-2.webp"]],
@@ -15,7 +16,7 @@ var devlogs = [
 ]
 
 var devlogS = [
-    557.5995392043085, 465.6, 470.61090407177363, 624, 571.2, 676.8, 518.4, 465.6, 703.2, 650.4000000000001, 650.4000000000001, 129.2
+    650.4000000000001, 557.5995392043085, 465.6, 470.61090407177363, 624, 571.2, 676.8, 518.4, 465.6, 703.2, 650.4000000000001, 650.4000000000001, 129.2
 ]
 
 function calculateDevlogS() {
