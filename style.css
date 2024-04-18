@@ -3,15 +3,6 @@ body {
 	background-color: #161616;
 }
 
-canvas {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	transform-origin: top left;
-	margin: 0;
-	display: none;
-}
-
 h3 {
 	color: #161616;
 }

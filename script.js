@@ -129,7 +129,6 @@ function hslToRgb(h, s, l, a) {
 
     return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255), a]
 }
-
 function tick(timestamp) {
 	requestAnimationFrame(tick)
 
@@ -234,6 +233,11 @@ function tick(timestamp) {
 
 		particle.x += particle.dx * speed * delta
 		particle.y += particle.dy * speed * delta
+
+		if (isNaN(particle.x)) particle.x = Math.random()*canvas.width
+		if (isNaN(particle.y)) particle.y = Math.random()*canvas.height
+		if (isNaN(particle.dx)) particle.dx = Math.random()*2-1
+		if (isNaN(particle.dy)) particle.dy = Math.random()*2-1
 
 		if (trails) {
 			let lx
