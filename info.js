@@ -74,7 +74,7 @@ function infoTick() {
 }
 
 let actualLinks = [
-	"https://github.com/SilverSpace505",
+	"https://github.com/SllverSpace",
 	"https://silverspace.itch.io/",
 	"https://replit.com/@SilverSpace505",
 	"https://scratch.mit.edu/users/SilverSpace707/",
