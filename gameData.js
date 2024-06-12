@@ -2,7 +2,8 @@
 var tags = ["JS", "Scratch", "Godot", "Python", "Multiplayer", "2D", "3D", "Mobile", "Desktop", "Simulation", "Creator", "Education", "Platformer", "Speedrun", "Clicker", "None", "Beta"]
 
 var games = {
-	"Tritag 2": ["Tritag 2", "Mess around and spin", "https://tritag-2.silverspace.online", "assets/games/tritag-2.webp", ["JS", "2D", "Desktop", "Beta"]],
+	"To The Top": ["To The Top", "Cool Unity Platformer - Yr 10 Digi Tech Project", "https://silverspace.itch.io/to-the-top", "assets/games/to-the-top.png", ["3D", "Platformer", "Desktop", "Multiplayer", "Speedrun"]],
+	"Tritag 2": ["Tritag 2", "Mess around and spin", "https://tritag-2.silverspace.online", "assets/games/tritag-2.webp", ["JS", "2D", "Desktop", "Multiplayer", "Speedrun", "Beta"]],
 	// "Platformer": ["Platformer", "Random Platformer Game", "https://platformer.silverspace.online", "assets/games/platformer.webp", ["JS", "2D", "Beta", "Platformer", "Multiplayer", "Desktop"]],
 	"Speedwing": ["Speedwing", "Year 9 Digital Tech Project", "https://speedwing.silverspace.online", "assets/games/speedwing.webp", ["JS", "2D", "Speedrun", "Desktop", "Education", "Mobile"]],
 	"Quadtree Particles": ["Quadtree Particles", "Faster Particle Simulation", "https://quadtree-particles.silverspace.online", "assets/games/quadtree-particles.png", ["JS", "2D", "Simulation", "Desktop", "Mobile"]],

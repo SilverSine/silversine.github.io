@@ -1,5 +1,6 @@
 
 var devlogs = [
+    ["I've done some coding in multiple areas over the last few weeks, i've made a unity game for school, and have been working on the transparency issue with 3D renderers again. \n \nThe new unity game that i've made is called To The Top and if people like it then i'll remake it in JS so i can expand on it more. I will still make a few minor changes to the game to polish it further to make it a solid game. \n \nThe renderer issue with my 3D engine is more tricky to fix and it might take me a while to get a grip on what's going wrong, so this means i won't be making anymore new games until i figure it out which could take a few days to a week.", "2024/6/12", ["assets/devlogs/to-the-top-thumbnail.png", "assets/games/to-the-top.png"]],
     ["It's been a while since my last devlog, mainly because i have not really made significant progress on one project. \n \nMy plan right now is to rework the farlands in a way that makes it unique but still with voxels. But this could change at any moment, i will provide updates when i can about how it's going \n \nOver the past month i've been struggling to come up with ideas, my first one was of course tritag 2 which ended up being boring to code, and now it's a 2d drone simulator which i am planning to port into the farlands to continue it in 3d. Screenshots bellow show the projects i've worked on", "2024/5/18", ["assets/devlogs/tritag-2.webp", "assets/devlogs/2d-drone.webp"]],
     ["I figured out how to debug better on mobile devices, so i've made silverspace.online and speedwing look like proper mobile apps and games. \n \nIn the future i will try to make all my new games mobile supported since debugging for mobile has became really simple and effective.", "2024/4/18", ["assets/devlogs/silver-main-page.webp", "assets/devlogs/speedwing-menu.webp"]],
     ["Tritag 2 is now multiplayer! You can find it in the games section on my website by clicking the beta filter. There's not actually any gameplay, but i thought it would be good to make the game playable to everyone for some feedback if needed. \n \nCurrently you can spin to gain dashes and you can give yourself and name and colour, the game actually uses the engine behind Platformer which was a game that i made a month ago of which i abandoned, so it's good that i had a use. My next steps are well, the tag part of the name, which might include lobbies, but we'll just have to wait and see.", "2024/4/17", ["assets/games/tritag-2.webp"]],
@@ -18,7 +19,7 @@ var devlogs = [
 ]
 
 var devlogS = [
-    472.12036232178406, 703.2, 557.5995392043085, 465.6, 470.61090407177363, 624, 571.2, 676.8, 518.4, 465.6, 703.2, 650.4000000000001, 650.4000000000001, 129.2
+    702.1331289015443, 627.3216757093303, 472.12036232178406, 703.2, 557.5995392043085, 465.6, 470.61090407177363, 624, 571.2, 676.8, 518.4, 465.6, 703.2, 650.4000000000001, 650.4000000000001, 129.2
 ]
 
 function calculateDevlogS() {
