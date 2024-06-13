@@ -39,9 +39,13 @@ class Game {
 		this.draw()
 	}
 	draw() {
-		
 		ui.img(this.x, this.y, this.width*this.size, this.height*this.size, this.img)
 		ui.rect(this.x, this.y, this.width*this.size, this.height*this.size, [255, 255, 255, 0.1*this.anim])
+
+		if (this.data in clicks) {
+			ui.img(this.x+this.width*this.size/2 - 30*su, this.y-this.height*this.size/2 + 30*su, 30*su, 30*su, clickImg)
+			ui.text(this.x+this.width*this.size/2 - 30*su*1.5, this.y-this.height*this.size/2 + 30*su, 20*su, clicks[this.data], {align: "right"})
+		}
 
 		if (this.anim > 0) {
 			this.lines = ui.measureText(15*su, games[this.data][1], {align: "center", wrap: this.width}).lines
@@ -55,8 +59,9 @@ class Game {
 			let oldA = ctx.globalAlpha
 			ctx.globalAlpha *= this.anim
 			ui.text(this.x, this.y + this.height/2 + 5*su - (this.lines*15*su+5*su), 15*su, games[this.data][1], {align: "center", wrap: this.width})
+			if (!games[this.data][5]) ui.text(this.x, this.y + this.height/2 - size/2 - 5*su - this.anim*(this.lines*15*su+5*su), size, games[this.data][0], {align: "center"})
 			ctx.globalAlpha = oldA
 		}
-		ui.text(this.x, this.y + this.height/2 - size/2 - 5*su - this.anim*(this.lines*15*su+5*su), size, games[this.data][0], {align: "center"})
+		if (games[this.data][5]) ui.text(this.x, this.y + this.height/2 - size/2 - 5*su - this.anim*(this.lines*15*su+5*su), size, games[this.data][0], {align: "center"})
 	}
 }

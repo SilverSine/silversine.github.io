@@ -17,6 +17,8 @@ function sendMsg(sendData, bypass=false) {
 	}
 }
 
+var clicks = {}
+
 function connectToServer() {
 	if (ws) {
 		if (ws.readyState == WebSocket.OPEN) {
@@ -36,6 +38,7 @@ function connectToServer() {
 			console.log("Connected")
             connected = true
 			ws.send(JSON.stringify({view: id}))
+			sendMsg({getClicks: true})
 		}
 		if (msg.ping && !document.hidden) {
 			ws.send(JSON.stringify({ping: true}))
@@ -44,7 +47,9 @@ function connectToServer() {
 			console.log(JSON.stringify(msg.views))
 		}
 		if (msg.clicks) {
-			console.log(JSON.stringify(msg.clicks))
+			for (let game in msg.clicks.clicks) {
+				clicks[game] = msg.clicks.clicks[game]
+			}
 		}
         if (msg.history) {
             chat = msg.history
