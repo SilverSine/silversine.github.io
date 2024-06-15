@@ -4,6 +4,18 @@ var gamesE = []
 var selectedTags = []
 var isBeta = false
 
+var searchBox = new ui.TextBox("Search")
+searchBox.outlineColour = [255, 255, 255, 1]
+searchBox.colour = [10, 10, 10, 1]
+
+var sortDrop = new ui.Dropdown(["Coolest", "Clicks", "Newest", "Oldest"])
+sortDrop.bgColour = [22, 22, 22, 1]
+sortDrop.outlineColour = [255, 255, 255, 1]
+
+var sort = "Newest"
+
+var lastSearch = ""
+
 function createGames(games) {
 	gamesE = []
 	for (let data of games) {
@@ -60,7 +72,7 @@ function gamesTick() {
 			game.y = y * (is * ia) + (is * ia)/2
 			game.width = is
 			game.height = is * ia
-			game.basic(ui.hovered(game.x+content.x-content.width/2, game.y+content.off.y, game.width, game.height))
+			game.basic(ui.hovered(game.x+content.x-content.width/2, game.y+content.off.y+content.y-content.height/2, game.width, game.height) && !sortDrop.hovered())
 			game.draw()
 		}
 		
@@ -84,7 +96,22 @@ function gamesTick() {
 	ui.setC()
 
 	ui.rect(cSidebar+sidebar, canvas.height/2 + tSidebar/2, 5*su, canvas.height - tSidebar, [255, 255, 255, 1])
-	ui.rect(sidebar + content.width/2 + cSidebar - 1.25*su, tSidebar, content.width+2.5*su, 5*su, [255, 255, 255, 1])
+	ui.rect(sidebar + content.width/2 + (cSidebar - 1.25*su)/2, tSidebar, content.width+2.5*su+cSidebar, 5*su, [255, 255, 255, 1])
+
+	searchBox.set(sidebar + content.width/2 - 45*su, 27.5*su, content.width-100*su, 50*su)
+	searchBox.outlineSize = 10*su
+	searchBox.hover()
+	searchBox.draw()
+
+	sortDrop.set(sidebar + content.width - 95*su, 27.5*su, 200*su, 50*su)
+	sortDrop.set2(25*su, 5*su)
+    sortDrop.basic()
+    sortDrop.draw()
+
+	if (searchBox.text != lastSearch) {
+		createGames(getGames(selectedTags, isBeta))
+		lastSearch = searchBox.text
+	}
 
 	for (let i = 0; i < tags.length; i++) {
 		if (tags[i] == "None") { continue }
@@ -121,10 +148,15 @@ function gamesTick() {
 }
 
 function checkGames() {
+	if (sortDrop.hovered()) return
 	for (let game of gamesE) {
 		if (game.hovered) {
 			ws.send(JSON.stringify({click: [game.data, id]}))
 			window.open(games[game.data][2], "_blank")
 		}
 	}
+}
+
+sortDrop.changed = (value) => {
+	createGames(getGames(selectedTags, isBeta))
 }

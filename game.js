@@ -17,7 +17,7 @@ class Game {
 		this.height = height
 		this.data = data
 		this.img = new Image()
-		this.img.src = games[data][3]
+		this.img.src = games[data][4]
 	}
 	basic(hovered) {
 		this.hovered = hovered
@@ -62,6 +62,6 @@ class Game {
 			if (!games[this.data][5]) ui.text(this.x, this.y + this.height/2 - size/2 - 5*su - this.anim*(this.lines*15*su+5*su), size, games[this.data][0], {align: "center"})
 			ctx.globalAlpha = oldA
 		}
-		if (games[this.data][5]) ui.text(this.x, this.y + this.height/2 - size/2 - 5*su - this.anim*(this.lines*15*su+5*su), size, games[this.data][0], {align: "center"})
+		if (games[this.data][6]) ui.text(this.x, this.y + this.height/2 - size/2 - 5*su - this.anim*(this.lines*15*su+5*su), size, games[this.data][0], {align: "center"})
 	}
 }

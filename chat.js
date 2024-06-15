@@ -104,19 +104,6 @@ function deleteMsg(index) {
     sendMsg({deleteMsg: [deleteMsgPassword, index]})
 }
 
-input.checkInputs = (event) => {
-    input.cistart()
-
-    if (page == "chat") {
-        input.mouse.x -= 400*su
-        username.checkFocus(event)
-        chatBox.checkFocus(event)
-        input.mouse.x += 400*su
-    }
-
-    input.ciend()
-}
-
 input.keyPressAlways = (event) => {
 	if (input.focused && event.code == "Enter") {
 		if (input.focused == chatBox && input.focused.text.length > 0) {

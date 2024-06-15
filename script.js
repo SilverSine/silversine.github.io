@@ -186,7 +186,7 @@ function tick(timestamp) {
 	// canvas.height = window.innerHeight
 
 	sidebar = 400*su
-	tSidebar = -2.5*su
+	tSidebar = -2.5*su+60*su
 	cSidebar = 200*su
 
 	// cScale = w / (targetSize.x*aspect/screenScale) / screenScale
@@ -403,7 +403,7 @@ var imgVis = []
 
 var imgs = []
 for (let game in games) {
-	if (!games[game][4].includes("Beta")) imgs.push(games[game][3])
+	if (!games[game][5].includes("Beta")) imgs.push(games[game][4])
 }
 
 for (let i in imgs) {
@@ -458,4 +458,21 @@ input.onClick = (event) => {
 	if (page == "games") {
 		checkGames()
 	}
+}
+
+input.checkInputs = (event) => {
+    input.cistart()
+
+    if (page == "chat") {
+        input.mouse.x -= 400*su
+        username.checkFocus(event)
+        chatBox.checkFocus(event)
+        input.mouse.x += 400*su
+    }
+
+	if (page == "games") {
+		searchBox.checkFocus(event)
+	}
+
+    input.ciend()
 }
