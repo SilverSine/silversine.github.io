@@ -59,7 +59,8 @@ class Game {
 			let oldA = ctx.globalAlpha
 			ctx.globalAlpha *= this.anim
 			ui.text(this.x, this.y + this.height/2 + 5*su - (this.lines*15*su+5*su), 15*su, games[this.data][1], {align: "center", wrap: this.width})
-			if (!games[this.data][5]) ui.text(this.x, this.y + this.height/2 - size/2 - 5*su - this.anim*(this.lines*15*su+5*su), size, games[this.data][0], {align: "center"})
+			ui.text(this.x-this.width*this.size/2+5*su, this.y-this.height*this.size/2+20*su, 15*su, games[this.data][3])
+			if (!games[this.data][6]) ui.text(this.x, this.y + this.height/2 - size/2 - 5*su - this.anim*(this.lines*15*su+5*su), size, games[this.data][0], {align: "center"})
 			ctx.globalAlpha = oldA
 		}
 		if (games[this.data][6]) ui.text(this.x, this.y + this.height/2 - size/2 - 5*su - this.anim*(this.lines*15*su+5*su), size, games[this.data][0], {align: "center"})
