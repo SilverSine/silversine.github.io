@@ -3,6 +3,8 @@ var wConnect = false
 var connected = false
 var ws
 
+
+
 function getViews() {
 	ws.send(JSON.stringify({getViews: true}))
 }
@@ -18,6 +20,17 @@ function sendMsg(sendData, bypass=false) {
 }
 
 var clicks = {}
+var online = {}
+
+var convert = {
+	"Silver": "silver",
+	"Tritag 2": "tritag-2",
+	"The Farlands": "the-farlands",
+	"To The Top": "unity-platformer",
+	"Battle Cubes": "battle-cubes",
+	"Speedwing": "speedwing",
+	"Earth": "earth"
+}
 
 function connectToServer() {
 	if (ws) {
@@ -38,10 +51,11 @@ function connectToServer() {
 			console.log("Connected")
             connected = true
 			ws.send(JSON.stringify({view: id}))
-			sendMsg({getClicks: true})
+			sendMsg({getClicks: true, online: true})
 		}
 		if (msg.ping && !document.hidden) {
 			ws.send(JSON.stringify({ping: true}))
+			sendMsg({online: true})
 		}
 		if (msg.views) {
 			console.log(JSON.stringify(msg.views))
@@ -80,6 +94,9 @@ function connectToServer() {
            		tscrolling = true
 			}
         }
+		if (msg.online) {
+			online = msg.online
+		}
 	})
 
 	ws.addEventListener("close", (event) => {

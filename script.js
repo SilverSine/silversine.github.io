@@ -10,6 +10,7 @@ var pfImg = new Image(); pfImg.src = "assets/pf4.png"
 var optionsImg = new Image(); optionsImg.src = "assets/options.png"
 var chatImg = new Image(); chatImg.src = "assets/chat.png"
 var clickImg = new Image(); clickImg.src = "assets/click-2.png"
+var onlineImg = new Image(); onlineImg.src = "assets/online.png"
 
 var screenScale = 1
 var targetSize = {x: 1500*screenScale, y: 1000*screenScale}
