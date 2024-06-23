@@ -2,6 +2,7 @@
 var tags = ["JS", "Scratch", "Godot", "Python", "Multiplayer", "2D", "3D", "Mobile", "Desktop", "Simulation", "Creator", "Education", "Platformer", "Speedrun", "Clicker", "None", "Beta"]
 
 var games = {
+	"Learning WebGPU": ["Learning WebGPU", "The future of web rendering", "https://learning-webgpu.silverspace.online", "2024/6/23", "assets/games/learning-webgpu.webp", ["3D", "Desktop", "JS", "Beta"], true],
 	"To The Top": ["To The Top", "Cool Unity Platformer - Yr 10 Digi Tech Project", "https://silverspace.itch.io/to-the-top", "2024/6/12", "assets/games/to-the-top.png", ["3D", "Platformer", "Desktop", "Multiplayer", "Speedrun", "Education"], true],
 	"Tritag 2": ["Tritag 2", "Mess around and spin", "https://tritag-2.silverspace.online", "2024/4/17", "assets/games/tritag-2.webp", ["JS", "2D", "Desktop", "Multiplayer", "Speedrun", "Beta"]],
 	// "Platformer": ["Platformer", "Random Platformer Game", "https://platformer.silverspace.online", "assets/games/platformer.webp", ["JS", "2D", "Beta", "Platformer", "Multiplayer", "Desktop"]],
