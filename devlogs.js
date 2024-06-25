@@ -1,5 +1,6 @@
 
 var devlogs = [
+    ["I figured out how to make multiple objects that can move around, so i've made some ground, a cube, triangle, and a grid of triangles. \n \nThe work i've put into this is already paying off as i have 4x performance compared to the other engine already, i could optimise it further, but it's not necessary at the moment. \n \nMy next step is transparent objects, this time i'm going to use a a-buffer which already has examples available for WebGPU.", "2024/6/25", ["assets/devlogs/cube-and-triangle.webp", "assets/devlogs/lots-of-triangles.webp"]],
     ["I'm learning WebGPU now, since it's the future of rendering in the web, this means that my 3d games in the future will look cooler and run faster. (shadows, lighting, ssao) \n \nYou can see my progress at learning-webgpu.silverspace.online, or under the beta tag in the games section. \n \nIt's took a bit and some weird buffer and shader stuff, but i have rendered some triangles and a square with camera controls!", "2024/6/23", ["assets/games/learning-webgpu.webp", "assets/devlogs/learning-webgpu.webp"]],
     ["Sorting and Searching through my games is now supported, so you can see what my oldest and newest games are, or what the most popular ones are.", "2024/6/15", ["assets/devlogs/search-and-sort.webp"]],
     ["There are now click counts on all my games so everyone can see how popular they are, currently there are not many clicks, but in the future i plan to spread the website around the web a bit to increase click rates.", "2024/6/13", ["assets/devlogs/click-counters.webp", "assets/devlogs/clicks-close-up.webp"]],
@@ -22,7 +23,7 @@ var devlogs = [
 ]
 
 var devlogS = [
-    576.7991326021504, 439.2, 398.9466574547182, 702.1331289015443, 627.3216757093303, 472.12036232178406, 703.2, 557.5995392043085, 465.6, 470.61090407177363, 624, 571.2, 676.8, 518.4, 465.6, 703.2, 650.4000000000001, 650.4000000000001, 129.2
+    600.7429863633249, 576.7991326021504, 439.2, 398.9466574547182, 702.1331289015443, 627.3216757093303, 472.12036232178406, 703.2, 557.5995392043085, 465.6, 470.61090407177363, 624, 571.2, 676.8, 518.4, 465.6, 703.2, 650.4000000000001, 650.4000000000001, 129.2
 ]
 
 function calculateDevlogS() {
