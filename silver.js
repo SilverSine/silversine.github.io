@@ -14,7 +14,7 @@ optionsButton.hoverMul = 0.95
 chatButton.hoverMul = 0.95
 
 ui.setFont("font", "assets/font.ttf", 0.8)
-ui.spacingMul = 1.1
+ui.spacingMul = 1.2
 utils.setup()
 utils.ignoreSafeArea()
 utils.setStyles()
