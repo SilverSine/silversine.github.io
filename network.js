@@ -101,7 +101,7 @@ function connectToServer() {
 
 	ws.addEventListener("close", (event) => {
 		console.log("Disconnected")
-		wConnect = true
+		setTimeout(() => {wConnect = true}, 1000)
 	})
 }
 
