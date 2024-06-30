@@ -27,6 +27,21 @@ var devlogS = [
     720.6107290233838, 629.5429863633249, 603.1991326021503, 446.4, 408.5466574547182, 735.7331289015442, 658.5216757093302, 488.920362321784, 734.4, 588.7995392043085, 475.2, 487.4109040717736, 648, 590.4, 705.5999999999999, 532.8, 475.2, 734.4, 676.8, 676.8, 136.39999999999998
 ]
 
+var latest = "2024/6/30"
+
+var now = new Date()
+var year = now.getFullYear()
+var month = now.getMonth() + 1
+var day = now.getDate()
+var nowDate = year+"/"+month+"/"+day
+
+var newDevlog = dateToNumber(nowDate) - dateToNumber(latest) <= 2
+
+function dateToNumber(date) {
+    let dates = date.split("/")
+    return parseInt(dates[0])*365 + parseInt(dates[1])*30 + parseInt(dates[2])
+}
+
 function calculateDevlogS() {
     devlogS = []
     for (let devlog of devlogs) {

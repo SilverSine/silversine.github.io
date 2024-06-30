@@ -134,12 +134,14 @@ function silverTick() {
 	ui.img(sidebar/2+60*su, 150*su + 55*su*3, 45*su, 45*su, optionsImg)
 	ui.img(sidebar/2+45*su, 150*su + 55*su*4, 45*su, 45*su, chatImg)
 
-	// ctx.save()
-	// ctx.translate(sidebar/2-115*su, 140*su + 55*su*3)
-	// ctx.rotate(-Math.PI/16)
-	// ui.text(0, 0, 20*su, "NEW", {colour: [0, 200, 255, 1]})
-	// ctx.restore()
-
+	if (newDevlog) {
+		ctx.save()
+		ctx.translate(sidebar/2-115*su, 140*su + 55*su*2)
+		ctx.rotate(-Math.PI/16)
+		ui.text(0, 0, 20*su, "NEW", {colour: [0, 200, 255, 1]})
+		ctx.restore()
+	}
+	
 	// ctx.save()
 	// ctx.translate(sidebar/2-95*su, 140*su + 55*su*4)
 	// ctx.rotate(-Math.PI/16)
