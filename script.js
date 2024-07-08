@@ -284,6 +284,9 @@ function tick(timestamp) {
 		particle.dy += (mouse.y - particle.y) / dm * fm * delta
 	}
 
+	particles[100].x = -1000
+	particles[100].y = -1000
+
 	for (let particle of particles) {
 		ui.circle(particle.x, particle.y, 5*su, hslToRgb(particleColour, 100, 50, 1))
 	}
