@@ -1,5 +1,6 @@
 
 var devlogs = [
+    ["Well, this has taken some time, i've implemented Depth Peeling which is a actual solution to the transparency problem. \n \nIt works just as expected, as it's perfect in accuracy, although if i wanted to i could convert it into dual depth peeling, which would double performance and maintain the accuracy, and i could implement other strategies to save even more fps, i'm going to give dual depth peeling a shot and i'm likely to implement the other strategies.", "2024/7/16", ["assets/devlogs/rainbow-layers.webp", "assets/devlogs/fixed-now.webp"]],
     ["I've implemented WBOIT in WebGPU (Weighted Blended Order Independent Transparency), but again, it's having issues. \n \nAs shown in the pictures when close to an object it's colours override all the other colours of the objects in a way that does not look correct. \n \nMy other options to get this working are adaptive transparency, dual depth peeling in a single pass, normal dual depth peeling, and just ordering of triangles.", "2024/7/2", ["assets/devlogs/blue-blending.webp", "assets/devlogs/house-blending.webp"]],
     ["I have made an A-Buffer in WebGPU, and some cool grass that moves when you get close, but there are issues. \n \nCurrently the transparent objects look great when they are small onscreen, as shown with the colourful cubes, but when looking at bigger and more complex objects like the house, it creates flashing pixels and weird bugs, due to the nature of the GPU and memory managment. \n \nI could either increase the amount of memory being sent to the GPU, but lower FPS, or i could try another strategy and save FPS. My other options that could work are WBOIT (Weighted Blended Order Independent Transparency), Dual Depth Peeling, and Adaptive Transparency. Or just ordering of triangles.", "2024/6/30", ["assets/devlogs/a-buffer.webp", "assets/devlogs/a-buffer-overflow.webp"]],
     ["I figured out how to make multiple objects that can move around, so i've made some ground, a cube, triangle, and a grid of triangles. \n \nThe work i've put into this is already paying off as i have 4x performance compared to the other engine already, i could optimise it further, but it's not necessary at the moment. \n \nMy next step is transparent objects, this time i'm going to use a a-buffer which already has examples available for WebGPU.", "2024/6/25", ["assets/devlogs/cube-and-triangle.webp", "assets/devlogs/lots-of-triangles.webp"]],
@@ -25,7 +26,7 @@ var devlogs = [
 ]
 
 var devlogS = [
-    601.7340517424334, 720.6107290233838, 629.5429863633249, 603.1991326021503, 446.4, 408.5466574547182, 735.7331289015442, 658.5216757093302, 488.920362321784, 734.4, 588.7995392043085, 475.2, 487.4109040717736, 648, 590.4, 705.5999999999999, 532.8, 475.2, 734.4, 676.8, 676.8, 136.39999999999998
+    574.9983193892408, 601.7340517424334, 720.6107290233838, 629.5429863633249, 603.1991326021503, 446.4, 408.5466574547182, 735.7331289015442, 658.5216757093302, 488.920362321784, 734.4, 588.7995392043085, 475.2, 487.4109040717736, 648, 590.4, 705.5999999999999, 532.8, 475.2, 734.4, 676.8, 676.8, 136.39999999999998
 ]
 
 var latest = "2024/7/2"
