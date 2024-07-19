@@ -1,5 +1,6 @@
 
 var devlogs = [
+    ["The Transparency Problem is now Solved! I've implemented Dual Depth Peeling and in a way that allows for crazy amounts of depth layers. \n \nDepth Peeling is still going to be a part of the engine, since it's still faster on low to mid range devices, you can test how it works on your computer at learning-webgpu.silverspace.online, or in the beta section of the games page. \n \nMy next steps are lighting and shadows, lighting will only take a few hours, and shadows should only take a few days, then it will be time to make some games.", "2024/7/19", ["assets/devlogs/depth-peeling.webp", "assets/devlogs/dual-depth-peeling.webp"]],
     ["Well, this has taken some time, i've implemented Depth Peeling which is a actual solution to the transparency problem. \n \nIt works just as expected, as it's perfect in accuracy, although if i wanted to i could convert it into dual depth peeling, which would double performance and maintain the accuracy, and i could implement other strategies to save even more fps, i'm going to give dual depth peeling a shot and i'm likely to implement the other strategies.", "2024/7/16", ["assets/devlogs/rainbow-layers.webp", "assets/devlogs/fixed-now.webp"]],
     ["I've implemented WBOIT in WebGPU (Weighted Blended Order Independent Transparency), but again, it's having issues. \n \nAs shown in the pictures when close to an object it's colours override all the other colours of the objects in a way that does not look correct. \n \nMy other options to get this working are adaptive transparency, dual depth peeling in a single pass, normal dual depth peeling, and just ordering of triangles.", "2024/7/2", ["assets/devlogs/blue-blending.webp", "assets/devlogs/house-blending.webp"]],
     ["I have made an A-Buffer in WebGPU, and some cool grass that moves when you get close, but there are issues. \n \nCurrently the transparent objects look great when they are small onscreen, as shown with the colourful cubes, but when looking at bigger and more complex objects like the house, it creates flashing pixels and weird bugs, due to the nature of the GPU and memory managment. \n \nI could either increase the amount of memory being sent to the GPU, but lower FPS, or i could try another strategy and save FPS. My other options that could work are WBOIT (Weighted Blended Order Independent Transparency), Dual Depth Peeling, and Adaptive Transparency. Or just ordering of triangles.", "2024/6/30", ["assets/devlogs/a-buffer.webp", "assets/devlogs/a-buffer-overflow.webp"]],
@@ -26,10 +27,10 @@ var devlogs = [
 ]
 
 var devlogS = [
-    574.9983193892408, 601.7340517424334, 720.6107290233838, 629.5429863633249, 603.1991326021503, 446.4, 408.5466574547182, 735.7331289015442, 658.5216757093302, 488.920362321784, 734.4, 588.7995392043085, 475.2, 487.4109040717736, 648, 590.4, 705.5999999999999, 532.8, 475.2, 734.4, 676.8, 676.8, 136.39999999999998
+    709.5655629139073, 574.9983193892408, 601.7340517424334, 720.6107290233838, 629.5429863633249, 603.1991326021503, 446.4, 408.5466574547182, 735.7331289015442, 658.5216757093302, 488.920362321784, 734.4, 588.7995392043085, 475.2, 487.4109040717736, 648, 590.4, 705.5999999999999, 532.8, 475.2, 734.4, 676.8, 676.8, 136.39999999999998
 ]
 
-var latest = "2024/7/16"
+var latest = "2024/7/19"
 
 var now = new Date()
 var year = now.getFullYear()
@@ -88,6 +89,25 @@ function devlogsTick() {
     let lines = ui.text(10 * su, 150 * su + 55 * su * 1, 20 * su, "Here, you can find updates on what i've done recently, or what i'm doing currently, i might put in some links for beta games in some cases.", {wrap: sidebar - 10 * su}).lines
 
     ui.rect(sidebar / 2, 150 * su + 55 * su * 1 + lines * 20 * su + 10 * su, sidebar, 5 * su, [255, 255, 255, 1])
+
+    let starty = canvas.height-300*su
+    
+	ui.text(sidebar/2, starty + 35*su, 35*su, "Featured Game", {align: "center"})
+
+	featuredGame.x = sidebar/2
+	featuredGame.y = starty + 35*su + 130 * su
+	featuredGame.width = 300*su
+	featuredGame.height = 200*su
+	featuredGame.basic(ui.hovered(featuredGame.x, featuredGame.y, featuredGame.width, featuredGame.height))
+	featuredGame.draw()
+
+    if (games[featured][5].includes("Beta")) {
+		ctx.save()
+		ctx.translate(sidebar/2-160*su, starty+255*su)
+		ctx.rotate(Math.PI/16)
+		ui.text(0, 0, 25*su, "BETA", {colour: [255, 50, 50, 1]})
+		ctx.restore()
+	}
 
     ui.setC(content)
 

@@ -55,13 +55,13 @@ var trailCooldown = 0
 var trailCooldown2 = 0
 
 var particleSpeed = 1
-var	gravity = 0.7
+var	gravity = 0.6
 var mouseRange = 100
 var particleRange = 100
 var mouseStrength = 10
 var gravityStrength = 1
 var particleColour = 195
-var maxSpeed = 2
+var maxSpeed = 5
 var trails = true
 var deleteMsgPassword = "no"
 
@@ -96,7 +96,7 @@ username.text = usernameR
 function force(r, a, b=0.7) {
     let beta = b
 	if (r < beta) {
-		return r / beta - 1
+		return (r / beta - 1) * 5
 	} else if (beta < r && r < 1) {
 		return a * (1 - Math.abs(2 * r - 1 - beta) / (1 - beta))
 	} else {
@@ -461,6 +461,11 @@ input.onClick = (event) => {
 	}
 	if (page == "games") {
 		checkGames()
+	}
+
+	if (ui.hovered(featuredGame.x, featuredGame.y, featuredGame.width, featuredGame.height)) {
+		ws.send(JSON.stringify({click: [featuredGame.data, id]}))
+		window.open(games[featuredGame.data][2], "_blank")
 	}
 }
 

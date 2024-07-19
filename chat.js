@@ -30,6 +30,25 @@ function chatTick() {
 
 	ui.rect(sidebar / 2, 150 * su + 55 * su * 1 + lines * 20 * su + 10 * su, sidebar, 5 * su, [255, 255, 255, 1])
 
+    let starty = canvas.height-300*su
+    
+	ui.text(sidebar/2, starty + 35*su, 35*su, "Featured Game", {align: "center"})
+
+	featuredGame.x = sidebar/2
+	featuredGame.y = starty + 35*su + 130 * su
+	featuredGame.width = 300*su
+	featuredGame.height = 200*su
+	featuredGame.basic(ui.hovered(featuredGame.x, featuredGame.y, featuredGame.width, featuredGame.height))
+	featuredGame.draw()
+
+    if (games[featured][5].includes("Beta")) {
+		ctx.save()
+		ctx.translate(sidebar/2-160*su, starty+255*su)
+		ctx.rotate(Math.PI/16)
+		ui.text(0, 0, 25*su, "BETA", {colour: [255, 50, 50, 1]})
+		ctx.restore()
+	}
+
     ui.setC(content)
 
     ui.rect(content.width/2, content.height/2, content.width-200*su, content.height-200*su, [0, 0, 0, 0.5])

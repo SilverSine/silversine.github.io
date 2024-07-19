@@ -13,6 +13,10 @@ devlogButton.hoverMul = 0.95
 optionsButton.hoverMul = 0.95
 chatButton.hoverMul = 0.95
 
+var featured = "Learning WebGPU"
+
+var featuredGame = new Game(0, 0, 0, 0, featured)
+
 ui.setFont("font", "assets/font.ttf", 0.8)
 ui.spacingMul = 1.2
 utils.setup()
@@ -173,4 +177,23 @@ function silverTick() {
 	let lines = ui.text(10*su, 150*su + 55*su*5, 20*su, "This is my website, it has all the main games I have made and has some information about me and what I am doing right now.", {wrap: sidebar-10*su}).lines
 
 	ui.rect(sidebar/2, 150*su+55*su*5 + lines*20*su+10*su, sidebar, 5*su, [255, 255, 255, 1])
+
+	let starty = canvas.height-300*su
+
+	ui.text(sidebar/2, starty + 35*su, 35*su, "Featured Game", {align: "center"})
+
+	featuredGame.x = sidebar/2
+	featuredGame.y = starty + 35*su + 130 * su
+	featuredGame.width = 300*su
+	featuredGame.height = 200*su
+	featuredGame.basic(ui.hovered(featuredGame.x, featuredGame.y, featuredGame.width, featuredGame.height))
+	featuredGame.draw()
+
+	if (games[featured][5].includes("Beta")) {
+		ctx.save()
+		ctx.translate(sidebar/2-160*su, starty+255*su)
+		ctx.rotate(Math.PI/16)
+		ui.text(0, 0, 25*su, "BETA", {colour: [255, 50, 50, 1]})
+		ctx.restore()
+	}
 }

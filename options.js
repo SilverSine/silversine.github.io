@@ -25,6 +25,9 @@ var maxSpeedS = new ui.ScrollBar(scrollImg, scrollerImg)
 var trailS = new ui.ScrollBar(scrollImg, scrollerImg)
 trailS.maxValue = 1
 
+var resetButton = new ui.Button("rect", "Reset")
+resetButton.bgColour = [255, 0, 0, 0.5]
+
 function optionsTick() {
     ui.text(sidebar / 2, 50 * su, 75 * su, "Options", {align: "center"})
 	
@@ -44,6 +47,25 @@ function optionsTick() {
     let lines = ui.text(10 * su, 150 * su + 55 * su * 1, 20 * su, "Here, you can customize how the background looks from changing the size of the particles to changing their colours and their trails.", {wrap: sidebar - 10 * su}).lines
 
 	ui.rect(sidebar / 2, 150 * su + 55 * su * 1 + lines * 20 * su + 10 * su, sidebar, 5 * su, [255, 255, 255, 1])
+
+	let starty = canvas.height-300*su
+	
+	ui.text(sidebar/2, starty + 35*su, 35*su, "Featured Game", {align: "center"})
+
+	featuredGame.x = sidebar/2
+	featuredGame.y = starty + 35*su + 130 * su
+	featuredGame.width = 300*su
+	featuredGame.height = 200*su
+	featuredGame.basic(ui.hovered(featuredGame.x, featuredGame.y, featuredGame.width, featuredGame.height))
+	featuredGame.draw()
+
+	if (games[featured][5].includes("Beta")) {
+		ctx.save()
+		ctx.translate(sidebar/2-160*su, starty+255*su)
+		ctx.rotate(Math.PI/16)
+		ui.text(0, 0, 25*su, "BETA", {colour: [255, 50, 50, 1]})
+		ctx.restore()
+	}
 
 	ui.setC(content)
 
@@ -84,7 +106,7 @@ function optionsTick() {
 		if (mouse.ldown) {
 			gravityS.value = gravityS.convert(mouse.x)
 			gravityS.capValue()
-			gravity = 1 - gravityS.value
+			gravity = 1 - Math.round(gravityS.value/0.1)*0.1
 			saveVar("gravity")
 		}
 	}
@@ -101,7 +123,7 @@ function optionsTick() {
 		if (mouse.ldown) {
 			particleRangeS.value = Math.round(particleRangeS.convert(mouse.x))
 			particleRangeS.capValue()
-			particleRange = particleRangeS.value
+			particleRange = Math.round(particleRangeS.value/25)*25
 			saveVar("particleRange")
 		}
 	}
@@ -118,7 +140,7 @@ function optionsTick() {
 		if (mouse.ldown) {
 			mouseRangeS.value = Math.round(mouseRangeS.convert(mouse.x))
 			mouseRangeS.capValue()
-			mouseRange = mouseRangeS.value
+			mouseRange = Math.round(mouseRangeS.value/25)*25
 			saveVar("mouseRange")
 		}
 	}
@@ -135,7 +157,7 @@ function optionsTick() {
 		if (mouse.ldown) {
 			gravityStrengthS.value = Math.round(gravityStrengthS.convert(mouse.x))
 			gravityStrengthS.capValue()
-			gravityStrength = gravityStrengthS.value
+			gravityStrength = Math.round(gravityStrengthS.value/5)*5
 			saveVar("gravityStrength")
 		}
 	}
@@ -152,7 +174,7 @@ function optionsTick() {
 		if (mouse.ldown) {
 			mouseStrengthS.value = Math.round(mouseStrengthS.convert(mouse.x))
 			mouseStrengthS.capValue()
-			mouseStrength = mouseStrengthS.value
+			mouseStrength = Math.round(mouseStrengthS.value/5)*5
 			saveVar("mouseStrength")
 		}
 	}
@@ -169,7 +191,7 @@ function optionsTick() {
 		if (mouse.ldown) {
 			maxSpeedS.value = Math.round(maxSpeedS.convert(mouse.x))
 			maxSpeedS.capValue()
-			maxSpeed = maxSpeedS.value
+			maxSpeed = Math.round(maxSpeedS.value/5)*5
 			saveVar("maxSpeed")
 		}
 	}
@@ -189,6 +211,36 @@ function optionsTick() {
 			trails = trailS.value == 1
 			saveVar("trails")
 		}
+	}
+
+	// ui.rect(content.width/2, 850*su, 300*su, 100*su, [255, 0, 0, 1])
+
+	resetButton.set(content.width/2, 950*su, 300*su, 50*su)
+	resetButton.textSize = 35 * su
+	resetButton.basic()
+
+	resetButton.draw()
+
+	if (resetButton.hovered() && mouse.lclick) {
+		resetButton.click()
+		particleSpeed = 1
+		gravity = 0.6
+		mouseRange = 100
+		particleRange = 100
+		mouseStrength = 10
+		gravityStrength = 1
+		particleColour = 195
+		maxSpeed = 5	
+		trails = true
+		saveVar("particleSpeed")
+		saveVar("gravity")
+		saveVar("mouseRange")
+		saveVar("particleRange")
+		saveVar("mouseStrength")
+		saveVar("gravityStrength")
+		saveVar("particleColour")
+		saveVar("maxSpeed")
+		saveVar("trails")
 	}
 
 	mouse.x += 400*su
