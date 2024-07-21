@@ -1,5 +1,6 @@
 
 var devlogs = [
+    ["I coded in some lighting for the objects, it was a bit more difficult than expected, but it still ended up being quite quick to code. \n \nI've made a little light that flies around the scene, some spheres to show the lighting better, and material properties to change how different objects look. My next step is shadows.", "2024/7/21", ["assets/devlogs/spheres.webp", "assets/devlogs/light.webp", "assets/devlogs/lit-world.webp"]],
     ["The Transparency Problem is now Solved! I've implemented Dual Depth Peeling and in a way that allows for crazy amounts of depth layers. \n \nDepth Peeling is still going to be a part of the engine, since it's still faster on low to mid range devices, you can test how it works on your computer at learning-webgpu.silverspace.online, or in the beta section of the games page. \n \nMy next steps are lighting and shadows, lighting will only take a few hours, and shadows should only take a few days, then it will be time to make some games.", "2024/7/19", ["assets/devlogs/depth-peeling.webp", "assets/devlogs/dual-depth-peeling.webp"]],
     ["Well, this has taken some time, i've implemented Depth Peeling which is a actual solution to the transparency problem. \n \nIt works just as expected, as it's perfect in accuracy, although if i wanted to i could convert it into dual depth peeling, which would double performance and maintain the accuracy, and i could implement other strategies to save even more fps, i'm going to give dual depth peeling a shot and i'm likely to implement the other strategies.", "2024/7/16", ["assets/devlogs/rainbow-layers.webp", "assets/devlogs/fixed-now.webp"]],
     ["I've implemented WBOIT in WebGPU (Weighted Blended Order Independent Transparency), but again, it's having issues. \n \nAs shown in the pictures when close to an object it's colours override all the other colours of the objects in a way that does not look correct. \n \nMy other options to get this working are adaptive transparency, dual depth peeling in a single pass, normal dual depth peeling, and just ordering of triangles.", "2024/7/2", ["assets/devlogs/blue-blending.webp", "assets/devlogs/house-blending.webp"]],
@@ -27,7 +28,7 @@ var devlogs = [
 ]
 
 var devlogS = [
-    709.5655629139073, 574.9983193892408, 601.7340517424334, 720.6107290233838, 629.5429863633249, 603.1991326021503, 446.4, 408.5466574547182, 735.7331289015442, 658.5216757093302, 488.920362321784, 734.4, 588.7995392043085, 475.2, 487.4109040717736, 648, 590.4, 705.5999999999999, 532.8, 475.2, 734.4, 676.8, 676.8, 136.39999999999998
+    461.77278988487666, 709.5655629139073, 574.9983193892408, 601.7340517424334, 720.6107290233838, 629.5429863633249, 603.1991326021503, 446.4, 408.5466574547182, 735.7331289015442, 658.5216757093302, 488.920362321784, 734.4, 588.7995392043085, 475.2, 487.4109040717736, 648, 590.4, 705.5999999999999, 532.8, 475.2, 734.4, 676.8, 676.8, 136.39999999999998
 ]
 
 var latest = "2024/7/19"
@@ -91,7 +92,7 @@ function devlogsTick() {
     ui.rect(sidebar / 2, 150 * su + 55 * su * 1 + lines * 20 * su + 10 * su, sidebar, 5 * su, [255, 255, 255, 1])
 
     let starty = canvas.height-300*su
-    
+
 	ui.text(sidebar/2, starty + 35*su, 35*su, "Featured Game", {align: "center"})
 
 	featuredGame.x = sidebar/2
