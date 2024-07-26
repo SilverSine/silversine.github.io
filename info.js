@@ -55,10 +55,10 @@ function infoTick() {
 	ui.text(50 * su, 110 * su + lines3 * 25 * su, 50 * su, "Links")
 
 	links = []
-	links.push(ui.link(50 * su, 110 * su + 50*su + lines3 * 25 * su + 20*su*0, 20 * su, "My Github Account"))
-	links.push(ui.link(50 * su, 110 * su + 50*su + lines3 * 25 * su + 20*su*1, 20 * su, "My Itch Account"))
-	links.push(ui.link(50 * su, 110 * su + 50*su + lines3 * 25 * su + 20*su*2, 20 * su, "My Replit Account"))
-	links.push(ui.link(50 * su, 110 * su + 50*su + lines3 * 25 * su + 20*su*3, 20 * su, "My Scratch Account"))
+	links.push(ui.link(50 * su, 110 * su + 50*su + lines3 * 25 * su + 30*su*0, 20 * su, "My Github Account"))
+	links.push(ui.link(50 * su, 110 * su + 50*su + lines3 * 25 * su + 30*su*1, 20 * su, "My Itch Account"))
+	links.push(ui.link(50 * su, 110 * su + 50*su + lines3 * 25 * su + 30*su*2, 20 * su, "My Replit Account"))
+	links.push(ui.link(50 * su, 110 * su + 50*su + lines3 * 25 * su + 30*su*3, 20 * su, "My Scratch Account"))
 	
 	// ui.text(50 * su, 110 * su + 35 * 3 * su + (lines2 + lines3) * 20 * su, 20 * su, "My Gotm Account \nTeam Sowflux (My Team) \nMy Itch Account \nMy Replit Account \nMy Scratch Account")
 	// ui.text(50 * su, 110 * su + 35 * 3 * su + (lines2 + lines3) * 20 * su + 20 * su * 1, 20 * su, "Team Sowflux (My Team)", {colour: [50, 200, 255, 1]})
