@@ -60,7 +60,7 @@ class Game {
 			ctx.globalAlpha *= this.anim
 			ui.text(this.x, this.y + this.height/2 + 5*su - (this.lines*15*su+5*su), 15*su, games[this.data][1], {align: "center", wrap: this.width})
 			ui.text(this.x-this.width*this.size/2+5*su, this.y-this.height*this.size/2+20*su, 15*su, games[this.data][3])
-			if (this.data in convert) {
+			if (this.data in convert && convert[this.data] in online) {
 				ui.text(this.x-this.width*this.size/2+30*su, this.y+this.height*this.size/2-20*su, 20*su, online[convert[this.data]].toString())
 				ui.img(this.x-this.width*this.size/2 + 15*su, this.y+this.height*this.size/2 - 20*su, 25*su, 25*su, onlineImg)
 			}
