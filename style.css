@@ -1,6 +1,6 @@
 body {
-	/* overflow: hidden; */
-	/* background-color: #161616; */
+	overflow: hidden;
+	background-color: #161616;
 }
 
 h3 {
@@ -13,14 +13,4 @@ h1 {
 
 p {
 	color: #161616;
-	font: betterFont;
-}
-
-@font-face {
-	font-family: betterFont;
-	src: url(assets/font.ttf);
-}
-
-* {
-	font-family: betterFont;
 }
