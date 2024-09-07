@@ -71,6 +71,8 @@ function gamesTick() {
 	let ia = 240/400
 
 	let iw = Math.floor(content.width / (is))
+	#testing
+
 
 	ui.setC(content)
 	
